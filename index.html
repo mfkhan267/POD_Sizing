@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kubernetes Capacity Planner</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#f4f7fb;color:#182230}
+.app{max-width:1450px;margin:auto;padding:28px 32px 24px}header{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:22px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.16em;color:#53677d;margin-bottom:7px}h1{font-size:30px;margin:0 0 7px;letter-spacing:-.03em}header p{margin:0;color:#637287}
+.actions{display:flex;gap:9px}.btn{border:1px solid #d4dee8;border-radius:9px;padding:10px 14px;font-weight:750;cursor:pointer;background:#fff;color:#24364b}.btn.primary{background:#173f67;color:#fff;border-color:#173f67}.btn input{display:none}
+.controls{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;background:#fff;border:1px solid #dce4ed;padding:15px;border-radius:13px;box-shadow:0 2px 8px #18334d08}
+.control label{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#6c7c8f;margin-bottom:6px}.control select,.control input{width:100%;padding:9px;border:1px solid #ccd7e3;border-radius:8px;background:#fff;font-weight:650;color:#24364b}
+.filebar{display:flex;justify-content:space-between;align-items:center;margin:12px 0;color:#607086;font-size:13px}.filebar button{border:0;background:transparent;color:#53677d;cursor:pointer;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:15px}.metric{background:#fff;border:1px solid #dce4ed;border-radius:13px;padding:17px;display:flex;gap:13px;align-items:center}.metric.accent{border-color:#a9c4df;box-shadow:inset 0 3px #173f67}
+.icon{width:40px;height:40px;border-radius:9px;background:#edf3f8;display:grid;place-items:center;font-size:19px;color:#173f67}.metric span{display:block;font-size:11px;color:#6b7a8d;font-weight:750}.metric strong{display:block;font-size:27px;margin-top:2px}.metric small{display:block;color:#8491a0;margin-top:2px}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:15px;margin-bottom:15px}.panel{background:#fff;border:1px solid #dce4ed;border-radius:13px;overflow:hidden}.panel-head{padding:16px 18px;border-bottom:1px solid #e6ebf1}.panel-head h2{font-size:16px;margin:0 0 3px}.panel-head span{font-size:12px;color:#718094}
+table{width:100%;border-collapse:collapse;font-size:12.5px}th{text-align:left;font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:#738195;background:#f8fafc;padding:10px 11px}td{padding:10px 11px;border-top:1px solid #edf1f5;white-space:nowrap}tbody tr:hover{background:#fafcff}
+.pill{font-size:10px;font-weight:800;padding:4px 7px;border-radius:99px;background:#edf2f7}.prod{background:#e8f0f8;color:#1b4c79}.dev{color:#49616f}.test{color:#6b5260}.uat{color:#5d5a42}.preprod{color:#4e5f48}
+.sizing-row{display:flex;justify-content:space-between;padding:11px 18px;border-bottom:1px solid #edf1f5;color:#53657a}.sizing-row strong{color:#182230;font-size:18px}.sizing-total{margin:13px 18px 5px;padding:13px;background:#f0f5fa;border-radius:9px;display:flex;justify-content:space-between}.sizing-total strong{font-size:24px;color:#173f67}.note{font-size:11px;line-height:1.5;color:#778699;padding:0 18px 12px}
+.table-wrap{overflow:auto;max-height:420px}.empty{text-align:center;padding:35px;color:#778699}footer{display:flex;justify-content:space-between;color:#8591a0;font-size:10.5px;padding:15px 2px}
+.warning{display:none;margin:12px 0;padding:11px 13px;border-radius:9px;background:#fff6e5;color:#805b19;border:1px solid #f0d69d;font-size:12px}.warning.show{display:block}
+@media(max-width:1000px){.controls{grid-template-columns:repeat(3,1fr)}.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}header{flex-direction:column}}
+@media(max-width:600px){.app{padding:18px}.controls,.cards{grid-template-columns:1fr}.actions{width:100%}.actions>*{flex:1;text-align:center}.actions label{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<div><div class="eyebrow">PLATFORM ENGINEERING</div><h1>Kubernetes Capacity Planner</h1><p>Estimate Pods, Istio sidecar CPU and Kubernetes worker-node capacity from your microservice inventory.</p></div>
+<div class="actions">
+<button class="btn" onclick="downloadTemplate()">↓ Template</button>
+<label class="btn primary">↑ Upload CSV/XLSX<input id="fileInput" type="file" accept=".csv,.xlsx,.xls"></label>
+</div>
+</header>
+
+<section class="controls">
+<div class="control"><label>New Cluster</label><select id="newCluster"><option>YES</option><option>NO</option></select></div>
+<div class="control"><label>Worker Node Configuration</label><select id="nodeCores"><option value="8">8 Core</option><option value="16" selected>16 Core</option><option value="32">32 Core</option></select></div>
+<div class="control"><label>Node CPU Reserve</label><select id="reserve"><option value="10">10%</option><option value="15">15%</option><option value="20" selected>20%</option><option value="25">25%</option></select></div>
+<div class="control"><label>Prod Minimum Nodes / AZ</label><select id="prodMin"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option></select></div>
+<div class="control"><label>Control Plane Nodes</label><input value="3" disabled></div>
+</section>
+
+<div class="filebar"><span><b>Input:</b> <span id="fileName">Sample data</span></span><button onclick="resetData()">↻ Reset</button></div>
+<div id="warning" class="warning"></div>
+
+<section class="cards">
+<div class="metric"><div class="icon">▣</div><div><span>Total Pods</span><strong id="totalPods">0</strong></div></div>
+<div class="metric"><div class="icon">CPU</div><div><span>Total Istio Cores</span><strong id="istioCores">0.00</strong></div></div>
+<div class="metric accent"><div class="icon">▤</div><div><span>Worker Nodes Required</span><strong id="workerNodes">0</strong></div></div>
+<div class="metric"><div class="icon">◆</div><div><span>Total Nodes</span><strong id="totalNodes">0</strong><small id="nodeSub">Workers + control plane</small></div></div>
+</section>
+
+<section class="grid">
+<div class="panel">
+<div class="panel-head"><h2>Capacity by Environment</h2><span>CPU and memory requests × replicas</span></div>
+<div style="overflow:auto"><table><thead><tr><th>Environment</th><th>Pods</th><th>App CPU</th><th>Istio CPU</th><th>Total CPU</th><th>Memory</th><th>Namespaces</th></tr></thead><tbody id="envBody"></tbody></table></div>
+</div>
+<div class="panel">
+<div class="panel-head"><h2>Node Sizing</h2><span id="sizingSubtitle"></span></div>
+<div class="sizing-row"><span>Shared non-Prod nodes</span><strong id="nonProdNodes">0</strong></div>
+<div class="sizing-row"><span>Prod nodes across 3 AZs</span><strong id="prodNodes">0</strong></div>
+<div class="sizing-row" id="controlRow"><span>Control-plane nodes</span><strong>3</strong></div>
+<div class="sizing-total"><span>Worker nodes</span><strong id="workerTotal">0</strong></div>
+<p class="note">DEV, TEST, UAT and Pre-Prod share worker capacity. Prod is calculated separately and distributed across 3 AZs. Node sizing considers CPU and memory requests, with the configured CPU reserve.</p>
+</div>
+</section>
+
+<div class="panel">
+<div class="panel-head"><h2>Workload Inventory</h2><span id="rowCount">0 services loaded</span></div>
+<div class="table-wrap"><table><thead><tr><th>Microservice</th><th>Namespace</th><th>Environment</th><th>CPU Req</th><th>Mem Req</th><th>CPU Limit</th><th>Mem Limit</th><th>Istio CPU</th><th>Istio Mem</th><th>Replicas</th><th>Pod CPU</th></tr></thead><tbody id="workloadBody"></tbody></table></div>
+</div>
+<footer><span>Zero-build static application — all calculations run in the browser.</span><span>CSV/XLSX input · No backend required</span></footer>
+</div>
+
+<script>
+const headers=["Microsevice Name","Namespace","Environment (DEV, TEST, UAT, Pre-Prod and Prod)","CPU Request","Mem Request","CPU Limits","Mem Limits","Istio sidecar CPU","Istio sidecar Mem","Replicas"];
+const sample=[
+["orders-api","orders","Prod","500m","512Mi","1000m","1Gi","100m","128Mi","3"],
+["payments-api","payments","Prod","750m","1Gi","1500m","2Gi","100m","128Mi","3"],
+["customer-api","customer","UAT","300m","512Mi","750m","1Gi","100m","128Mi","2"],
+["catalog-api","catalog","DEV","250m","256Mi","500m","512Mi","50m","64Mi","2"],
+["frontend","web","Pre-Prod","500m","512Mi","1000m","1Gi","100m","128Mi","2"],
+["search-api","search","TEST","400m","512Mi","800m","1Gi","100m","128Mi","2"]
+];
+let rows=sample.map(a=>Object.fromEntries(headers.map((h,i)=>[h,a[i]])));
+
+function norm(s){return String(s??"").trim().toLowerCase().replace(/[^a-z0-9]/g,"")}
+function get(r,names){let ks=Object.keys(r), targets=names.map(norm), k=ks.find(x=>targets.includes(norm(x)));return k?r[k]:""}
+function canonical(r){return {name:get(r,["Microsevice Name","Microservice Name","Service Name"]),namespace:get(r,["Namespace"]),environment:get(r,["Environment (DEV, TEST, UAT, Pre-Prod and Prod)","Environment","Env"]),cpuRequest:get(r,["CPU Request"]),memRequest:get(r,["Mem Request","Memory Request"]),cpuLimit:get(r,["CPU Limits","CPU Limit"]),memLimit:get(r,["Mem Limits","Memory Limits","Memory Limit"]),istioCpu:get(r,["Istio sidecar CPU","Istio Sidecar CPU"]),istioMem:get(r,["Istio sidecar Mem","Istio Sidecar Mem","Istio Sidecar Memory"]),replicas:Math.max(0,parseInt(get(r,["Replicas"])||"1",10)||0)}}
+function cpu(v){let s=String(v??"").trim().toLowerCase();if(!s)return 0;if(s.endsWith("m"))return parseFloat(s)||0;return (parseFloat(s)||0)*1000}
+function mem(v){let s=String(v??"").trim().toLowerCase(),n=parseFloat(s)||0;if(s.endsWith("ki"))return n/1024;if(s.endsWith("mi"))return n;if(s.endsWith("gi"))return n*1024;if(s.endsWith("ti"))return n*1024*1024;if(s.endsWith("k"))return n/1024;if(s.endsWith("g"))return n*1024;return n}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+
+function calculate(){
+ const envs=["DEV","TEST","UAT","Pre-Prod","Prod"], e={};
+ envs.forEach(x=>e[x]={pods:0,app:0,istio:0,total:0,mem:0,ns:new Set()});
+ rows.forEach(r=>{let x=e[envs.includes(r.environment)?r.environment:"DEV"], n=r.replicas, a=cpu(r.cpuRequest)*n, i=cpu(r.istioCpu)*n;x.pods+=n;x.app+=a;x.istio+=i;x.total+=a+i;x.mem+=(mem(r.memRequest)+mem(r.istioMem))*n;x.ns.add(r.namespace||"default")});
+ let cores=+document.getElementById("nodeCores").value,res=+document.getElementById("reserve").value,usable=cores*(1-res/100),minAZ=+document.getElementById("prodMin").value;
+ let non=["DEV","TEST","UAT","Pre-Prod"],npcpu=non.reduce((s,x)=>s+e[x].total,0)/1000,npmem=non.reduce((s,x)=>s+e[x].mem,0),pcpu=e.Prod.total/1000,pmem=e.Prod.mem;
+ let memPerNode=cores*4*(1-res/100);
+ let nonNodes=Math.max(Math.ceil(npcpu/usable),Math.ceil(npmem/1024/memPerNode),npcpu||npmem?1:0);
+ let prodNodes=Math.max(Math.ceil(pcpu/usable),Math.ceil(pmem/1024/memPerNode),pcpu||pmem?1:0);
+ if(e.Prod.pods)prodNodes=Math.max(prodNodes,minAZ*3);
+ let workers=nonNodes+prodNodes,newc=document.getElementById("newCluster").value==="YES",total=workers+(newc?3:0);
+ document.getElementById("totalPods").textContent=Object.values(e).reduce((s,x)=>s+x.pods,0);
+ document.getElementById("istioCores").textContent=(Object.values(e).reduce((s,x)=>s+x.istio,0)/1000).toFixed(2);
+ document.getElementById("workerNodes").textContent=workers;document.getElementById("workerTotal").textContent=workers;document.getElementById("totalNodes").textContent=total;
+ document.getElementById("nodeSub").textContent=newc?"Workers + 3 control nodes":"Workers only";
+ document.getElementById("controlRow").style.display=newc?"flex":"none";
+ document.getElementById("nonProdNodes").textContent=nonNodes;document.getElementById("prodNodes").textContent=prodNodes;
+ document.getElementById("sizingSubtitle").textContent=cores+"-core workers · "+(100-res)+"% usable CPU";
+ document.getElementById("envBody").innerHTML=envs.map(x=>{let z=e[x],cl=x.toLowerCase().replace("-","");return `<tr><td><span class="pill ${cl}">${x}</span></td><td>${z.pods}</td><td>${(z.app/1000).toFixed(2)} C</td><td>${(z.istio/1000).toFixed(2)} C</td><td><b>${(z.total/1000).toFixed(2)} C</b></td><td>${(z.mem/1024).toFixed(2)} GiB</td><td>${z.ns.size}</td></tr>`}).join("");
+ document.getElementById("rowCount").textContent=rows.length+" services loaded";
+ document.getElementById("workloadBody").innerHTML=rows.length?rows.map(r=>`<tr><td><b>${esc(r.name)}</b></td><td>${esc(r.namespace)}</td><td>${esc(r.environment)}</td><td>${esc(r.cpuRequest)}</td><td>${esc(r.memRequest)}</td><td>${esc(r.cpuLimit)}</td><td>${esc(r.memLimit)}</td><td>${esc(r.istioCpu)}</td><td>${esc(r.istioMem)}</td><td>${r.replicas}</td><td>${((cpu(r.cpuRequest)+cpu(r.istioCpu))/1000).toFixed(2)} C</td></tr>`).join(""):`<tr><td colspan="11" class="empty">No workload records loaded.</td></tr>`;
+}
+["newCluster","nodeCores","reserve","prodMin"].forEach(id=>document.getElementById(id).addEventListener("change",calculate));
+
+function parseCSV(text){let out=[],row=[],cell="",q=false;for(let i=0;i<text.length;i++){let c=text[i],n=text[i+1];if(c=='"'&&q&&n=='"'){cell+='"';i++;continue}if(c=='"'){q=!q;continue}if(c==","&&!q){row.push(cell);cell="";continue}if((c=="\n"||c=="\r")&&!q){if(c=="\r"&&n=="\n")i++;row.push(cell);if(row.some(v=>v.trim()!=""))out.push(row);row=[];cell="";continue}cell+=c}if(cell||row.length){row.push(cell);out.push(row)}return out}
+function loadCSV(text){let a=parseCSV(text);if(!a.length)return;let hs=a[0],records=a.slice(1).map(x=>Object.fromEntries(hs.map((h,i)=>[h,x[i]??""])));rows=records.map(canonical).filter(r=>r.name||r.namespace);calculate()}
+document.getElementById("fileInput").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;document.getElementById("fileName").textContent=f.name;let ext=f.name.toLowerCase().split(".").pop();if(ext==="csv"){let rd=new FileReader();rd.onload=()=>loadCSV(rd.result);rd.readAsText(f)}else{document.getElementById("warning").classList.add("show");document.getElementById("warning").textContent="XLSX requires a browser XLSX parser. Use the included Python XLSX converter server, or save your workbook as CSV for the zero-dependency browser version.";let rd=new FileReader();rd.onload=()=>{try{loadCSV(new TextDecoder().decode(rd.result))}catch(e){}};rd.readAsArrayBuffer(f)}});
+
+function resetData(){rows=sample.map(a=>Object.fromEntries(headers.map((h,i)=>[h,a[i]])));document.getElementById("fileName").textContent="Sample data";document.getElementById("warning").classList.remove("show");document.getElementById("newCluster").value="YES";document.getElementById("nodeCores").value="16";document.getElementById("reserve").value="20";document.getElementById("prodMin").value="1";calculate()}
+function downloadTemplate(){let csv=headers.join(",")+"\n"+sample.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(",")).join("\n");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="Kubernetes_Capacity_Template.csv";a.click();URL.revokeObjectURL(a.href)}
+calculate();
+</script>
+</body></html>
