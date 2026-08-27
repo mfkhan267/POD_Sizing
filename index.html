@@ -77,19 +77,19 @@ table{width:100%;border-collapse:collapse;font-size:12.5px}th{text-align:left;fo
 <script>
 const headers=["Microsevice Name","Namespace","Environment","CPU Request","Mem Request","CPU Limits","Mem Limits","Istio sidecar CPU","Istio sidecar Mem","Replicas"];
 const sample=[
-["orders-api","orders","Prod","500m","512Mi","1000m","1Gi","100m","128Mi","3"],
-["payments-api","payments","Prod","750m","1Gi","1500m","2Gi","100m","128Mi","3"],
-["customer-api","customer","UAT","300m","512Mi","750m","1Gi","100m","128Mi","2"],
-["catalog-api","catalog","DEV","250m","256Mi","500m","512Mi","50m","64Mi","2"],
-["frontend","web","Pre-Prod","500m","512Mi","1000m","1Gi","100m","128Mi","2"],
-["search-api","search","TEST","400m","512Mi","800m","1Gi","100m","128Mi","2"]
+["orders-api","orders","Prod",500,512,1000,1024,100,128,3],
+["payments-api","payments","Prod",750,1024,1500,2048,100,128,3],
+["customer-api","customer","UAT",300,512,750,1024,100,128,2],
+["catalog-api","catalog","DEV",250,256,500,512,50,64,2],
+["frontend","web","Pre-Prod",500,512,1000,1024,100,128,2],
+["search-api","search","TEST",400,512,800,1024,100,128,2]
 ];
 let rows=sample.map(a=>canonical(Object.fromEntries(headers.map((h,i)=>[h,a[i]]))));
 
 function norm(s){return String(s??"").trim().toLowerCase().replace(/[^a-z0-9]/g,"")}
 function get(r,names){let ks=Object.keys(r), targets=names.map(norm), k=ks.find(x=>targets.includes(norm(x)));return k?r[k]:""}
 function canonical(r){return {name:get(r,["Microsevice Name","Microservice Name","Service Name"]),namespace:get(r,["Namespace"]),environment:get(r,["Environment","Environment","Env"]),cpuRequest:get(r,["CPU Request"]),memRequest:get(r,["Mem Request","Memory Request"]),cpuLimit:get(r,["CPU Limits","CPU Limit"]),memLimit:get(r,["Mem Limits","Memory Limits","Memory Limit"]),istioCpu:get(r,["Istio sidecar CPU","Istio Sidecar CPU"]),istioMem:get(r,["Istio sidecar Mem","Istio Sidecar Mem","Istio Sidecar Memory"]),replicas:Math.max(0,parseInt(get(r,["Replicas"])||"1",10)||0)}}
-function cpu(v){let s=String(v??"").trim().toLowerCase();if(!s)return 0;if(s.endsWith("m"))return parseFloat(s)||0;return (parseFloat(s)||0)*1000}
+function cpu(v){let s=String(v??"").trim().toLowerCase();if(!s)return 0;if(s.endsWith("m"))return parseFloat(s)||0;return parseFloat(s)||0}
 function mem(v){let s=String(v??"").trim().toLowerCase(),n=parseFloat(s)||0;if(s.endsWith("ki"))return n/1024;if(s.endsWith("mi"))return n;if(s.endsWith("gi"))return n*1024;if(s.endsWith("ti"))return n*1024*1024;if(s.endsWith("k"))return n/1024;if(s.endsWith("g"))return n*1024;return n}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 

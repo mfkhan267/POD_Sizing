@@ -51,6 +51,8 @@ For maximum compatibility with a pure zero-build/no-dependency browser applicati
 - New Cluster = NO adds no control-plane nodes.
 - Worker configurations: 8, 16 and 32 cores.
 
+CPU and memory values in the included template and sample data are numbers only: CPU values are millicores (for example, `500`) and memory values are MiB (for example, `512`). Values with Kubernetes suffixes such as `500m`, `512Mi` and `1Gi` are still accepted in uploaded CSV files.
+
 ## Important
 
 CPU/memory *limits* are displayed but are not used for node sizing. Requests are the appropriate baseline for Kubernetes capacity planning; this can be changed later if your sizing methodology requires limits, QoS, DaemonSets, kube/system reservations, pod-density limits, N+1, or other overhead.
