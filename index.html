@@ -35,8 +35,8 @@ table{width:100%;border-collapse:collapse;font-size:12.5px}th{text-align:left;fo
 </header>
 
 <section class="controls">
-<div class="control"><label>New Cluster</label><select id="newCluster"><option>YES</option><option>NO</option></select></div>
-<div class="control"><label>Worker Node Configuration</label><select id="nodeCores"><option value="8">8 Core</option><option value="16" selected>16 Core</option><option value="32">32 Core</option></select></div>
+<div class="control"><label>New Cluster</label><select id="newCluster"><option>YES</option><option selected>NO</option></select></div>
+<div class="control"><label>Worker Node Configuration</label><select id="nodeCores"><option value="8" selected>8 Core</option><option value="16">16 Core</option><option value="32">32 Core</option></select></div>
 <div class="control"><label>Node CPU Reserve</label><select id="reserve"><option value="10">10%</option><option value="15">15%</option><option value="20" selected>20%</option><option value="25">25%</option></select></div>
 <div class="control"><label>Prod Minimum Nodes / AZ</label><select id="prodMin"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option></select></div>
 <div class="control"><label>Control Plane Nodes</label><input value="3" disabled></div>
@@ -103,7 +103,7 @@ function calculate(){
  let nonNodes=Math.max(Math.ceil(npcpu/usable),Math.ceil(npmem/1024/memPerNode),npcpu||npmem?1:0);
  let prodNodes=Math.max(Math.ceil(pcpu/usable),Math.ceil(pmem/1024/memPerNode),pcpu||pmem?1:0);
  if(e.Prod.pods)prodNodes=Math.max(prodNodes,minAZ*3);
- let workers=nonNodes+prodNodes,newc=document.getElementById("newCluster").value==="YES",total=workers+(newc?3:0);
+ let workers=nonNodes+prodNodes,newc=document.getElementById("newCluster").value==="NO",total=workers+(newc?3:0);
  document.getElementById("totalPods").textContent=Object.values(e).reduce((s,x)=>s+x.pods,0);
  document.getElementById("istioCores").textContent=(Object.values(e).reduce((s,x)=>s+x.istio,0)/1000).toFixed(2);
  document.getElementById("workerNodes").textContent=workers;document.getElementById("workerTotal").textContent=workers;document.getElementById("totalNodes").textContent=total;
@@ -121,7 +121,7 @@ function parseCSV(text){let out=[],row=[],cell="",q=false;for(let i=0;i<text.len
 function loadCSV(text){let a=parseCSV(text);if(!a.length)return;let hs=a[0],records=a.slice(1).map(x=>Object.fromEntries(hs.map((h,i)=>[h,x[i]??""])));rows=records.map(canonical).filter(r=>r.name||r.namespace);calculate()}
 document.getElementById("fileInput").addEventListener("change",e=>{let f=e.target.files[0];if(!f)return;document.getElementById("fileName").textContent=f.name;let ext=f.name.toLowerCase().split(".").pop();if(ext==="csv"){let rd=new FileReader();rd.onload=()=>loadCSV(rd.result);rd.readAsText(f)}else{document.getElementById("warning").classList.add("show");document.getElementById("warning").textContent="XLSX requires a browser XLSX parser. Use the included Python XLSX converter server, or save your workbook as CSV for the zero-dependency browser version.";let rd=new FileReader();rd.onload=()=>{try{loadCSV(new TextDecoder().decode(rd.result))}catch(e){}};rd.readAsArrayBuffer(f)}});
 
-function resetData(){rows=sample.map(a=>Object.fromEntries(headers.map((h,i)=>[h,a[i]])));document.getElementById("fileName").textContent="Sample data";document.getElementById("warning").classList.remove("show");document.getElementById("newCluster").value="YES";document.getElementById("nodeCores").value="16";document.getElementById("reserve").value="20";document.getElementById("prodMin").value="1";calculate()}
+function resetData(){rows=sample.map(a=>Object.fromEntries(headers.map((h,i)=>[h,a[i]])));document.getElementById("fileName").textContent="Sample data";document.getElementById("warning").classList.remove("show");document.getElementById("newCluster").value="YES";document.getElementById("nodeCores").value="8";document.getElementById("reserve").value="20";document.getElementById("prodMin").value="1";calculate()}
 function downloadTemplate(){let csv=headers.join(",")+"\n"+sample.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(",")).join("\n");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="Kubernetes_Capacity_Template.csv";a.click();URL.revokeObjectURL(a.href)}
 calculate();
 </script>
