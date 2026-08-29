@@ -1,58 +1,26 @@
-# Kubernetes Capacity Planner — Python-served Zero-Build Version
+# Kubernetes Pod Capacity Planner v4
+
+Python-served, zero-build static website.
 
 ## Run
-
-Requires only Python 3:
-
-```bash
-cd k8s-capacity-planner-python-static
 python3 server.py
-```
 
-Then open:
+Then open http://localhost:8080
 
-http://localhost:8080
+## Confirmed units
+The supplied template uses:
+- CPU: **millicores (mCPU)**. A unit-less `500` means 500m = 0.5 core.
+- Memory: **MiB**. A unit-less `6144` means 6144 Mi.
 
-Or use Python directly:
-
-```bash
-python3 -m http.server 8080
-```
-
-## Input
-
-The application accepts the following columns:
-
-- Microsevice Name
-- Namespace
-- Environment (DEV, TEST, UAT, Pre-Prod and Prod)
-- CPU Request
-- Mem Request
-- CPU Limits
-- Mem Limits
-- Istio sidecar CPU
-- Istio sidecar Mem
-- Replicas
-
-The browser implementation has zero external dependencies. CSV upload is fully supported.
-
-For maximum compatibility with a pure zero-build/no-dependency browser application, save Excel workbooks as CSV before upload. XLSX files are detected and the UI explains this limitation rather than silently producing incorrect results.
-
-## Capacity rules
-
-- Total Pods = sum of replicas.
-- Istio cores = Istio sidecar CPU request × replicas, converted from millicores to cores.
-- Worker sizing considers application CPU request + Istio CPU request and memory request.
-- Node CPU reserve defaults to 20%.
-- DEV, TEST, UAT and Pre-Prod share workers.
-- Prod is calculated separately and spread across 3 AZs.
-- Prod has a configurable minimum of 1, 2 or 3 workers per AZ.
-- New Cluster = YES adds 3 control-plane nodes.
-- New Cluster = NO adds no control-plane nodes.
-- Worker configurations: 8, 16 and 32 cores.
-
-CPU and memory values in the included template and sample data are numbers only: CPU values are millicores (for example, `500`) and memory values are MiB (for example, `512`). Values with Kubernetes suffixes such as `500m`, `512Mi` and `1Gi` are still accepted in uploaded CSV files.
-
-## Important
-
-CPU/memory *limits* are displayed but are not used for node sizing. Requests are the appropriate baseline for Kubernetes capacity planning; this can be changed later if your sizing methodology requires limits, QoS, DaemonSets, kube/system reservations, pod-density limits, N+1, or other overhead.
+## Confirmed sizing model
+- Total Pod Cores = SUM(CPU Request × Replicas)
+- Istio Cores = SUM(Istio sidecar CPU), deliberately NOT multiplied by replicas
+- Scheduling CPU = SUM((CPU Request + Istio CPU) × Replicas)
+- Scheduling Memory = SUM((Mem Request + Istio Mem) × Replicas)
+- Worker nodes = MAX(CPU-driven nodes, Memory-driven nodes)
+- Node profiles: 8/32, 16/64, 32/128 CPU/GiB
+- 80% usable CPU and memory
+- DEV + TEST + UAT + Pre-Prod share one worker pool
+- Prod is separate and has at least one worker per AZ across 3 AZs
+- New Cluster YES adds 3 control-plane nodes
+- New Cluster NO adds no control-plane nodes
