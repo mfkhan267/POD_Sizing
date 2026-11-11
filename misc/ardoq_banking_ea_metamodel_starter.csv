@@ -1,0 +1,805 @@
+﻿Schema ID,Element Kind,Domain,Workspace,Element Name,Parent Type / Source Type / Owning Element,Target Component Type,Field Data Type,Allowed Values / Notes,Required,Tier,Description,Banking Context / Example,Framework Alignment
+WS-01,Workspace,Business,Strategy & Motivation,Strategy & Motivation,,,,,,Core,"Strategy, objectives, key results and drivers (Ardoq Strategy to Execution pattern)",,
+WS-02,Workspace,Business,Business Capabilities & Value Streams,Business Capabilities & Value Streams,,,,,,Core,Capability map and value streams (BIAN / BA Guild aligned),,
+WS-03,Workspace,Business,Business Processes & Services,Business Processes & Services,,,,,,Core,"Processes, business services and business events",,
+WS-04,Workspace,Business,"Products, Customers & Channels","Products, Customers & Channels",,,,,,Core,"Banking products, customer segments, channels, journeys and payment/market infrastructure",,
+WS-05,Workspace,Business,Organization & People,Organization & People,,,,,,Core,"Legal entities, business lines, org units, people, roles, locations, jurisdictions",,
+WS-06,Workspace,Data,Information & Data,Information & Data,,,,,,Core,"Data domains, entities, critical data elements and data products",,
+WS-07,Workspace,Application,Application Landscape,Application Landscape,,,,,,Core,"Applications, modules, services and interfaces",,
+WS-08,Workspace,Technology,Technology & Infrastructure,Technology & Infrastructure,,,,,,Core,"Technology products, services, servers, data stores, cloud accounts, network zones",,
+WS-09,Workspace,Governance,"Regulations, Policies & Standards","Regulations, Policies & Standards",,,,,,Core,"Regulations, requirements, policies, standards, principles, regulatory reports",,
+WS-10,Workspace,Risk,"Risk, Control & Resilience","Risk, Control & Resilience",,,,,,Core,"Risks, controls, assessments, issues, incidents, critical functions, models",,
+WS-11,Workspace,Third Party,Third Parties & Vendors,Third Parties & Vendors,,,,,,Core,Vendors and third-party / ICT arrangements (DORA Register of Information ready),,
+WS-12,Workspace,Change,Change & Portfolio,Change & Portfolio,,,,,,Core,"Initiatives, capability deltas, future states, technical debt",,
+WS-13,Workspace,Governance,Architecture Governance & Patterns,Architecture Governance & Patterns,,,,,,Core,"Decision records, patterns and design objects",,
+WS-14,Workspace,Reference,BIAN Reference Model,BIAN Reference Model,,,,,,Core,"BIAN business areas, domains, service domains and service operations",,
+CT-001,Component Type,Business,Strategy & Motivation,Strategy,,,,,,Core,Enterprise or business-line strategy,Digital-First Retail Bank 2030,BA Guild / Ardoq
+CT-002,Component Type,Business,Strategy & Motivation,Driver,,,,,,Extended,Internal or external force motivating change,PSD3 open finance; fintech competition; rate cycle,ArchiMate Motivation
+CT-003,Component Type,Business,Strategy & Motivation,Objective,Objective,,,,,Core,Strategic objective (can be nested),Reduce cost-to-income ratio below 50%,Ardoq Strategy to Execution
+CT-004,Component Type,Business,Strategy & Motivation,Key Result,Objective,,,,,Core,Measurable result for an objective,Digital sales share 70% by FY27,Ardoq Strategy to Execution
+CT-005,Component Type,Business,Business Capabilities & Value Streams,Business Capability,Business Capability,,,,,Core,What the bank can do; L1-L4 hierarchy via parent,Payments > Instant Payments > Payment Fraud Screening,BIAN / BA Guild / Ardoq
+CT-006,Component Type,Business,Business Capabilities & Value Streams,Value Stream,,,,,,Core,End-to-end value delivery to a stakeholder,Open a Current Account; Originate a Mortgage,BA Guild / TOGAF
+CT-007,Component Type,Business,Business Capabilities & Value Streams,Value Stream Stage,Value Stream,,,,,Core,Stage of a value stream,Verify Identity (KYC); Underwrite; Disburse,BA Guild
+CT-008,Component Type,Business,Business Processes & Services,Business Process,Business Process,,,,,Core,Process L1-L4 hierarchy via parent,Customer Due Diligence; Trade Settlement; Loan Collections,ArchiMate / BPMN
+CT-009,Component Type,Business,Business Processes & Services,Business Service,,,,,,Core,Service offered to customers or internal consumers,Domestic Payment Service; FX Dealing Service,ArchiMate / UK Op-Res
+CT-010,Component Type,Business,Business Processes & Services,Business Event,,,,,,Extended,Trigger of a process or value stream,Account opening request; Payment return; Margin call,ArchiMate
+CT-011,Component Type,Business,"Products, Customers & Channels",Product Category,Product Category,,,,,Core,Product taxonomy node,Deposits; Lending; Cards; Treasury,BIAN / BA Guild
+CT-012,Component Type,Business,"Products, Customers & Channels",Product,Product Category,,,,,Core,Banking product or service offered,Fixed-Rate Mortgage; Business Current Account,BA Guild / Banking
+CT-013,Component Type,Business,"Products, Customers & Channels",Customer Segment,Customer Segment,,,,,Core,Customer or stakeholder group,Mass Affluent; SME; Financial Institutions,BA Guild
+CT-014,Component Type,Business,"Products, Customers & Channels",Channel,,,,,,Core,Customer or partner interaction channel,Mobile App; Branch; Open Banking API,TOGAF / Banking
+CT-015,Component Type,Business,"Products, Customers & Channels",Customer Journey,,,,,,Extended,End-to-end customer experience,Onboarding; Dispute resolution,Banking / CX
+CT-016,Component Type,Business,"Products, Customers & Channels",Journey Stage,Customer Journey,,,,,Extended,Step in a customer journey,Document upload; Approval notification,Banking / CX
+CT-017,Component Type,Business,"Products, Customers & Channels",Payment & Market Infrastructure,,,,,,Core,"External scheme, FMI or network the bank connects to",SWIFT; SEPA Instant; Fedwire; CHAPS; Visa; CLS; LCH,Banking / BIAN
+CT-018,Component Type,Business,Organization & People,Organization,,,,,,Core,Root group organization,Global Banking Group plc,Ardoq Foundation / BA Guild
+CT-019,Component Type,Business,Organization & People,Legal Entity,Organization,,,,,Core,Licensed or registered legal entity,UK Retail Bank Ltd; EU Broker-Dealer SA,TOGAF / Banking
+CT-020,Component Type,Business,Organization & People,Business Line,Business Line,,,,,Core,Cross-entity line of business (Basel business lines),Retail Banking; Commercial Banking; Markets,Banking / Basel
+CT-021,Component Type,Business,Organization & People,Organizational Unit,Organizational Unit,,,,,Core,"Division, department, branch or group",Group Operations; Credit Risk Department,Ardoq Organizational Modeling
+CT-022,Component Type,Business,Organization & People,Team,Team,,,,,Extended,"Delivery, support or product team",Payments Platform Team,Ardoq
+CT-023,Component Type,Business,Organization & People,Person,,,,,,Core,Individual (keep PII minimal),Enterprise Architect; Application Owner,Ardoq Foundation
+CT-024,Component Type,Business,Organization & People,Role,,,,,,Core,Role or accountability function,Application Owner; Data Steward; SMF24 Chief Operations,TOGAF / Banking SM&CR
+CT-025,Component Type,Business,Organization & People,Governance Body,,,,,,Extended,Committee or board,Architecture Review Board; Model Risk Committee,TOGAF
+CT-026,Component Type,Business,Organization & People,Location,Location,,,,,Core,Physical or cloud location,London HQ; Frankfurt DC; Azure West Europe,TOGAF
+CT-027,Component Type,Business,Organization & People,Jurisdiction,,,,,,Core,Country or regulatory region,United Kingdom; European Union; Singapore,Banking / Regulatory
+CT-028,Component Type,Data,Information & Data,Data Domain,Data Domain,,,,,Core,Subject area grouping of data,Party; Account; Transaction; Collateral; Ledger,TOGAF / DAMA
+CT-029,Component Type,Data,Information & Data,Data Entity,Data Domain,,,,,Core,Logical business data concept,Customer; Loan Agreement; Payment Instruction; Exposure,TOGAF / BA Guild Information Concept
+CT-030,Component Type,Data,Information & Data,Data Element,Data Entity,,,,,Extended,Attribute / critical data element,Counterparty LEI; Probability of Default,BCBS 239
+CT-031,Component Type,Data,Information & Data,Data Product,,,,,,Extended,Curated data asset for consumption,Customer 360 view; Daily Liquidity Positions,Data Mesh
+CT-032,Component Type,Application,Application Landscape,Application,Application,,,,,Core,Business-recognised software system,Core Banking; Payments Hub; Loan Origination; AML Monitoring,Ardoq Foundation / TOGAF
+CT-033,Component Type,Application,Application Landscape,Application Module,Application,,,,,Core,Functional component of an application,Deposits module; Card Authorisation module,Ardoq
+CT-034,Component Type,Application,Application Landscape,Application Service,,,,,,Extended,Logical service exposed by an application,Account Balance Service; Sanctions Screening Service,ArchiMate / TOGAF
+CT-035,Component Type,Application,Application Landscape,Interface,,,,,,Core,"Integration point (API, file, message, event)",Payments ISO 20022 gateway; Open Banking AIS API,Ardoq / ArchiMate
+CT-036,Component Type,Technology,Technology & Infrastructure,Technology Product,,,,,,Core,Vendor product / version in the technology catalogue,Oracle 19c; Red Hat OpenShift; Temenos Transact,Ardoq TPM / TOGAF TRM
+CT-037,Component Type,Technology,Technology & Infrastructure,Technology Service,Technology Service,,,,,Core,Platform or infrastructure service,Kafka Platform; Azure Kubernetes Service; HSM Service,Ardoq / TOGAF
+CT-038,Component Type,Technology,Technology & Infrastructure,Technical Capability,Technical Capability,,,,,Extended,Technical capability from TRM,API Management; Identity & Access; Observability,TOGAF TRM
+CT-039,Component Type,Technology,Technology & Infrastructure,Server,,,,,,Core,"Compute node, VM, cluster or LPAR",PRD-DB-014; Mainframe LPAR PROD1,Ardoq
+CT-040,Component Type,Technology,Technology & Infrastructure,Data Store,,,,,,Core,"Database, warehouse, lake or file store",Customer Master DB; Risk Data Lake,Ardoq
+CT-041,Component Type,Technology,Technology & Infrastructure,Cloud Account,,,,,,Core,"Cloud subscription, account or project",AWS payments-prod; Azure risk-analytics,Banking / FinOps
+CT-042,Component Type,Technology,Technology & Infrastructure,Network Zone,,,,,,Extended,Network segment or security zone,PCI Zone; DMZ; Partner Extranet,TOGAF
+CT-043,Component Type,Governance,"Regulations, Policies & Standards",Regulatory Authority,,,,,,Core,"Regulator, central bank or standard setter",PRA; FCA; ECB; Fed; OCC; MAS; BCBS,Banking / Regulatory
+CT-044,Component Type,Governance,"Regulations, Policies & Standards",Regulation,,,,,,Core,"Law, regulation, directive or guidance",DORA; BCBS 239; PSD2; GDPR; SR 11-7,Ardoq DORA solution
+CT-045,Component Type,Governance,"Regulations, Policies & Standards",Requirement,Regulation,,,,,Core,Specific article or obligation,DORA Art. 28 Register of Information,Ardoq DORA solution
+CT-046,Component Type,Governance,"Regulations, Policies & Standards",Policy,,,,,,Core,Internal policy,Third-Party Risk Management Policy,Ardoq / TOGAF
+CT-047,Component Type,Governance,"Regulations, Policies & Standards",Standard,,,,,,Core,"Internal, industry or regulatory standard",Cloud Security Standard; ISO 20022; ISO 27001,Ardoq / TOGAF
+CT-048,Component Type,Governance,"Regulations, Policies & Standards",Principle,,,,,,Extended,Architecture or business principle,API-first; Data is an asset,TOGAF
+CT-049,Component Type,Governance,"Regulations, Policies & Standards",Regulatory Report,,,,,,Core,Report submitted to a regulator,COREP; FINREP; FR Y-9C; LCR/NSFR; AnaCredit,Banking / Regulatory
+CT-050,Component Type,Risk,"Risk, Control & Resilience",Risk,Risk,,,,,Core,Risk taxonomy node (L1-L3 via parent),Operational Risk > Business Disruption,Banking / Basel / ERM
+CT-051,Component Type,Risk,"Risk, Control & Resilience",Control,,,,,,Core,"Preventive, detective or corrective control",Four-eyes payment release; Quarterly access recertification,COBIT / ISO 27001 / NIST CSF
+CT-052,Component Type,Risk,"Risk, Control & Resilience",Assessment,,,,,,Core,"Assessment, test or review record",Business Impact Analysis; DPIA; Vendor due diligence,Ardoq Architecture Records / DORA
+CT-053,Component Type,Risk,"Risk, Control & Resilience",Issue,,,,,,Core,"Finding, audit issue or risk acceptance",Internal Audit finding on access controls,Banking / GRC
+CT-054,Component Type,Risk,"Risk, Control & Resilience",Incident,,,,,,Core,Operational or ICT incident,Payments outage; Ransomware event,DORA / ITIL
+CT-055,Component Type,Risk,"Risk, Control & Resilience",Critical or Important Function,,,,,,Core,Function whose disruption threatens viability or stability,Payments Execution; Deposit-taking; Liquidity Management,DORA / UK Op-Res / BCBS
+CT-056,Component Type,Risk,"Risk, Control & Resilience",Model,,,,,,Extended,"Quantitative, AI or ML model",IFRS 9 ECL model; Fraud ML model; PD scorecard,SR 11-7 / EU AI Act
+CT-057,Component Type,Third Party,Third Parties & Vendors,Vendor,Vendor,,,,,Core,Supplier or service provider,Cloud provider; Core banking vendor; Payment processor,Ardoq / DORA
+CT-058,Component Type,Third Party,Third Parties & Vendors,Third-Party Arrangement,,,,,,Core,Contract or outsourcing arrangement,Master Services Agreement with Cloud Provider,DORA RoI / EBA Outsourcing
+CT-059,Component Type,Change,Change & Portfolio,Initiative,Initiative,,,,,Core,"Programme, project or epic",Core Banking Modernisation; DORA Compliance Programme,Ardoq Strategy to Execution
+CT-060,Component Type,Change,Change & Portfolio,Capability Delta,,,,,,Extended,Capability gap to be closed,Real-time fraud scoring capability,Ardoq Strategy to Execution
+CT-061,Component Type,Change,Change & Portfolio,Future State,,,,,,Extended,Target or transition architecture,Target State 2028; Transition Q4 2026,Ardoq Future States
+CT-062,Component Type,Change,Change & Portfolio,Technical Debt,,,,,,Extended,Known architectural debt item,Unsupported mainframe batch scheduler,Ardoq Architecture Records
+CT-063,Component Type,Governance,Architecture Governance & Patterns,Architecture Decision Record,,,,,,Extended,Recorded architecture decision,ADR-042 Adopt event streaming for payments,Ardoq Architecture Records
+CT-064,Component Type,Governance,Architecture Governance & Patterns,Architecture Pattern,,,,,,Extended,Reusable reference architecture,Instant Payments Reference Architecture,Ardoq Reference Architectures
+CT-065,Component Type,Governance,Architecture Governance & Patterns,Design Object,Architecture Pattern|Design Object,,,,,Extended,Weakly-typed building block inside a pattern,Gateway; Queue; Fraud Check box,Ardoq Reference Architectures
+CT-066,Component Type,Reference,BIAN Reference Model,BIAN Business Area,,,,,,Core,Top BIAN level,Sales & Service; Risk & Compliance,BIAN
+CT-067,Component Type,Reference,BIAN Reference Model,BIAN Business Domain,BIAN Business Area,,,,,Core,Mid-level BIAN grouping,Loans & Deposits; Payments,BIAN
+CT-068,Component Type,Reference,BIAN Reference Model,BIAN Service Domain,BIAN Business Domain,,,,,Core,Atomic BIAN functional building block,Current Account; Payment Execution; Credit Risk Assessment,BIAN
+CT-069,Component Type,Reference,BIAN Reference Model,BIAN Service Operation,BIAN Service Domain,,,,,Extended,Service operation of a service domain,Initiate; Retrieve; Execute,BIAN
+RT-001,Reference Type,Business,Strategy & Motivation,Has Objective,Strategy,Objective,,,,Core,Strategy is pursued through objectives,,Ardoq S2E
+RT-002,Reference Type,Business,Strategy & Motivation,Is Driven By,Strategy,Driver,,,,Extended,Responds to a driver,,ArchiMate
+RT-003,Reference Type,Business,Strategy & Motivation,Is Driven By,Objective,Driver,,,,Extended,Responds to a driver,,ArchiMate
+RT-004,Reference Type,Change,Change & Portfolio,Supports,Initiative,Objective,,,,Core,Contributes to an objective,,Ardoq S2E
+RT-005,Reference Type,Business,Business Capabilities & Value Streams,Supports,Business Capability,Objective,,,,Core,Contributes to an objective,,Ardoq S2E
+RT-006,Reference Type,Business,Strategy & Motivation,Supports,Objective,Objective,,,,Core,Contributes to an objective,,Ardoq S2E
+RT-007,Reference Type,Risk,"Risk, Control & Resilience",Supports,Model,Business Process,,,,Extended,Model used within a process,Scorecard supports credit decisioning,SR 11-7
+RT-008,Reference Type,Third Party,Third Parties & Vendors,Supports,Third-Party Arrangement,Critical or Important Function,,,,Core,Arrangement underpins a function,Cloud MSA supports Payments Execution,DORA
+RT-009,Reference Type,Application,Application Landscape,Is Governed By,Application,Policy,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-010,Reference Type,Application,Application Landscape,Is Governed By,Application,Standard,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-011,Reference Type,Application,Application Landscape,Is Governed By,Application,Principle,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-012,Reference Type,Technology,Technology & Infrastructure,Is Governed By,Technology Service,Policy,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-013,Reference Type,Technology,Technology & Infrastructure,Is Governed By,Technology Service,Standard,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-014,Reference Type,Technology,Technology & Infrastructure,Is Governed By,Technology Service,Principle,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-015,Reference Type,Business,Business Processes & Services,Is Governed By,Business Process,Policy,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-016,Reference Type,Business,Business Processes & Services,Is Governed By,Business Process,Standard,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-017,Reference Type,Business,Business Processes & Services,Is Governed By,Business Process,Principle,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-018,Reference Type,Technology,Technology & Infrastructure,Is Governed By,Data Store,Policy,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-019,Reference Type,Technology,Technology & Infrastructure,Is Governed By,Data Store,Standard,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-020,Reference Type,Technology,Technology & Infrastructure,Is Governed By,Data Store,Principle,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-021,Reference Type,Application,Application Landscape,Is Governed By,Interface,Policy,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-022,Reference Type,Application,Application Landscape,Is Governed By,Interface,Standard,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-023,Reference Type,Application,Application Landscape,Is Governed By,Interface,Principle,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-024,Reference Type,Change,Change & Portfolio,Is Governed By,Initiative,Policy,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-025,Reference Type,Change,Change & Portfolio,Is Governed By,Initiative,Standard,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-026,Reference Type,Change,Change & Portfolio,Is Governed By,Initiative,Principle,,,,Core,Subject to policy / standard / principle,,TOGAF
+RT-027,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Business Capability,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-028,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Business Process,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-029,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Business Service,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-030,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Product,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-031,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Application,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-032,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Application Module,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-033,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Interface,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-034,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Technology Service,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-035,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Data Entity,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-036,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Organizational Unit,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-037,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Critical or Important Function,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-038,Reference Type,Change,Change & Portfolio,Impacts,Initiative,Vendor,,,,Core,Initiative changes the component,,Ardoq S2E
+RT-039,Reference Type,Change,Change & Portfolio,Addresses,Initiative,Requirement,,,,Core,Initiative remediates or satisfies,,Ardoq
+RT-040,Reference Type,Change,Change & Portfolio,Addresses,Initiative,Issue,,,,Core,Initiative remediates or satisfies,,Ardoq
+RT-041,Reference Type,Change,Change & Portfolio,Addresses,Initiative,Technical Debt,,,,Core,Initiative remediates or satisfies,,Ardoq
+RT-042,Reference Type,Change,Change & Portfolio,Addresses,Initiative,Risk,,,,Core,Initiative remediates or satisfies,,Ardoq
+RT-043,Reference Type,Change,Change & Portfolio,Delivers,Initiative,Capability Delta,,,,Extended,Initiative delivers delta or state,,Ardoq
+RT-044,Reference Type,Change,Change & Portfolio,Delivers,Initiative,Future State,,,,Extended,Initiative delivers delta or state,,Ardoq
+RT-045,Reference Type,Change,Change & Portfolio,Is Dependency For,Initiative,Initiative,,,,Core,Initiative dependency,,Ardoq S2E
+RT-046,Reference Type,Business,Organization & People,Assigned To,Person,Initiative,,,,Core,Resource assigned to initiative,,Ardoq S2E
+RT-047,Reference Type,Business,Organization & People,Assigned To,Team,Initiative,,,,Core,Resource assigned to initiative,,Ardoq S2E
+RT-048,Reference Type,Business,Organization & People,Assigned To,Organizational Unit,Initiative,,,,Core,Resource assigned to initiative,,Ardoq S2E
+RT-049,Reference Type,Change,Change & Portfolio,Is Sponsored By,Initiative,Person,,,,Extended,Initiative sponsor,,Ardoq
+RT-050,Reference Type,Change,Change & Portfolio,Is Sponsored By,Initiative,Business Line,,,,Extended,Initiative sponsor,,Ardoq
+RT-051,Reference Type,Change,Change & Portfolio,Targets,Capability Delta,Business Capability,,,,Extended,Capability to close gap on,,Ardoq S2E
+RT-052,Reference Type,Change,Change & Portfolio,Has Subject,Future State,Business Capability,,,,Extended,Subject of a future state,,Ardoq Future States
+RT-053,Reference Type,Change,Change & Portfolio,Has Subject,Future State,Business Process,,,,Extended,Subject of a future state,,Ardoq Future States
+RT-054,Reference Type,Change,Change & Portfolio,Has Subject,Future State,Application,,,,Extended,Subject of a future state,,Ardoq Future States
+RT-055,Reference Type,Change,Change & Portfolio,Has Subject,Future State,Technology Service,,,,Extended,Subject of a future state,,Ardoq Future States
+RT-056,Reference Type,Change,Change & Portfolio,Has Subject,Future State,Organizational Unit,,,,Extended,Subject of a future state,,Ardoq Future States
+RT-057,Reference Type,Change,Change & Portfolio,Has Subject,Future State,Product,,,,Extended,Subject of a future state,,Ardoq Future States
+RT-058,Reference Type,Change,Change & Portfolio,Has Subject,Future State,Data Entity,,,,Extended,Subject of a future state,,Ardoq Future States
+RT-059,Reference Type,Change,Change & Portfolio,Precedes,Future State,Future State,,,,Extended,Transition sequencing,,Ardoq
+RT-060,Reference Type,Business,Business Capabilities & Value Streams,Is Realized By,Business Capability,Application,,,,Core,Capability realisation,,Ardoq BCR
+RT-061,Reference Type,Business,Business Capabilities & Value Streams,Is Realized By,Business Capability,Application Module,,,,Core,Capability realisation,,Ardoq BCR
+RT-062,Reference Type,Business,Business Capabilities & Value Streams,Is Realized By,Business Capability,Business Process,,,,Core,Capability realisation,,Ardoq BCR
+RT-063,Reference Type,Business,Business Capabilities & Value Streams,Is Realized By,Business Capability,Organizational Unit,,,,Core,Capability realisation,,Ardoq BCR
+RT-064,Reference Type,Technology,Technology & Infrastructure,Is Realized By,Technical Capability,Technology Product,,,,Extended,Technical capability realisation,,TOGAF TRM
+RT-065,Reference Type,Technology,Technology & Infrastructure,Is Realized By,Technical Capability,Technology Service,,,,Extended,Technical capability realisation,,TOGAF TRM
+RT-066,Reference Type,Business,"Products, Customers & Channels",Is Realized By,Channel,Application,,,,Core,Channel implemented by,,Banking
+RT-067,Reference Type,Business,"Products, Customers & Channels",Is Realized By,Channel,Technology Service,,,,Core,Channel implemented by,,Banking
+RT-068,Reference Type,Business,Business Processes & Services,Is Realized By,Business Service,Business Process,,,,Core,Service realisation,,ArchiMate
+RT-069,Reference Type,Business,Business Processes & Services,Is Realized By,Business Service,Application Service,,,,Core,Service realisation,,ArchiMate
+RT-070,Reference Type,Business,Business Capabilities & Value Streams,Depends On,Business Capability,Business Capability,,,,Extended,Capability dependency,,Ardoq
+RT-071,Reference Type,Application,Application Landscape,Depends On,Application,Application,,,,Core,Runtime or functional dependency,,Ardoq
+RT-072,Reference Type,Technology,Technology & Infrastructure,Depends On,Technology Service,Technology Service,,,,Core,Platform dependency,,Ardoq
+RT-073,Reference Type,Risk,"Risk, Control & Resilience",Depends On,Critical or Important Function,Business Process,,,,Core,Dependency mapping for resilience,Maps function to its end-to-end dependency chain,DORA / UK Op-Res
+RT-074,Reference Type,Risk,"Risk, Control & Resilience",Depends On,Critical or Important Function,Application,,,,Core,Dependency mapping for resilience,Maps function to its end-to-end dependency chain,DORA / UK Op-Res
+RT-075,Reference Type,Risk,"Risk, Control & Resilience",Depends On,Critical or Important Function,Technology Service,,,,Core,Dependency mapping for resilience,Maps function to its end-to-end dependency chain,DORA / UK Op-Res
+RT-076,Reference Type,Risk,"Risk, Control & Resilience",Depends On,Critical or Important Function,Third-Party Arrangement,,,,Core,Dependency mapping for resilience,Maps function to its end-to-end dependency chain,DORA / UK Op-Res
+RT-077,Reference Type,Risk,"Risk, Control & Resilience",Depends On,Critical or Important Function,Location,,,,Core,Dependency mapping for resilience,Maps function to its end-to-end dependency chain,DORA / UK Op-Res
+RT-078,Reference Type,Business,Business Capabilities & Value Streams,Is Enabled By,Value Stream Stage,Business Capability,,,,Core,Capabilities enabling a stage,,BA Guild
+RT-079,Reference Type,Business,Business Capabilities & Value Streams,Serves,Value Stream,Customer Segment,,,,Core,Stakeholder served,,BA Guild
+RT-080,Reference Type,Business,"Products, Customers & Channels",Serves,Product,Customer Segment,,,,Core,Stakeholder served,,BA Guild
+RT-081,Reference Type,Business,"Products, Customers & Channels",Serves,Customer Journey,Customer Segment,,,,Core,Stakeholder served,,BA Guild
+RT-082,Reference Type,Business,Business Processes & Services,Serves,Business Service,Customer Segment,,,,Core,Stakeholder served,,BA Guild
+RT-083,Reference Type,Business,Business Capabilities & Value Streams,Is Triggered By,Value Stream,Business Event,,,,Extended,Trigger,,ArchiMate
+RT-084,Reference Type,Business,Business Processes & Services,Is Triggered By,Business Process,Business Event,,,,Extended,Trigger,,ArchiMate
+RT-085,Reference Type,Business,Business Processes & Services,Realizes,Business Process,Value Stream Stage,,,,Core,Process realises stage or service,,ArchiMate
+RT-086,Reference Type,Business,Business Processes & Services,Realizes,Business Process,Business Service,,,,Core,Process realises stage or service,,ArchiMate
+RT-087,Reference Type,Business,Business Processes & Services,Triggers,Business Process,Business Process,,,,Extended,Process sequencing,,BPMN
+RT-088,Reference Type,Business,Business Processes & Services,Is Supported By,Business Process,Application,,,,Core,Application support for process,,Ardoq
+RT-089,Reference Type,Business,Business Processes & Services,Is Supported By,Business Process,Application Module,,,,Core,Application support for process,,Ardoq
+RT-090,Reference Type,Business,Business Processes & Services,Is Supported By,Business Process,Application Service,,,,Core,Application support for process,,Ardoq
+RT-091,Reference Type,Application,Application Landscape,Is Supported By,Application,Technology Service,,,,Core,Technology supporting application,,Ardoq
+RT-092,Reference Type,Application,Application Landscape,Is Supported By,Application,Data Store,,,,Core,Technology supporting application,,Ardoq
+RT-093,Reference Type,Application,Application Landscape,Is Supported By,Application Module,Technology Service,,,,Core,Technology supporting application,,Ardoq
+RT-094,Reference Type,Application,Application Landscape,Is Supported By,Application Module,Data Store,,,,Core,Technology supporting application,,Ardoq
+RT-095,Reference Type,Business,"Products, Customers & Channels",Is Supported By,Product,Application,,,,Core,Product processor / capability,Product processor = core banking module,Banking
+RT-096,Reference Type,Business,"Products, Customers & Channels",Is Supported By,Product,Business Capability,,,,Core,Product processor / capability,Product processor = core banking module,Banking
+RT-097,Reference Type,Business,"Products, Customers & Channels",Is Supported By,Journey Stage,Business Process,,,,Extended,Process behind journey stage,,Banking CX
+RT-098,Reference Type,Business,Business Processes & Services,Is Supported By,Business Service,Application Service,,,,Extended,Service support,,ArchiMate
+RT-099,Reference Type,Business,Business Processes & Services,Is Performed By,Business Process,Organizational Unit,,,,Core,Who performs the process (incl. outsourced),,ArchiMate / EBA
+RT-100,Reference Type,Business,Business Processes & Services,Is Performed By,Business Process,Role,,,,Core,Who performs the process (incl. outsourced),,ArchiMate / EBA
+RT-101,Reference Type,Business,Business Processes & Services,Is Performed By,Business Process,Third-Party Arrangement,,,,Core,Who performs the process (incl. outsourced),,ArchiMate / EBA
+RT-102,Reference Type,Risk,"Risk, Control & Resilience",Is Performed By,Critical or Important Function,Legal Entity,,,,Core,Entity performing the function,,DORA
+RT-103,Reference Type,Risk,"Risk, Control & Resilience",Is Performed By,Critical or Important Function,Organizational Unit,,,,Core,Entity performing the function,,DORA
+RT-104,Reference Type,Business,Business Processes & Services,Uses,Business Process,Data Entity,,,,Core,Data consumed or produced,,TOGAF
+RT-105,Reference Type,Risk,"Risk, Control & Resilience",Uses,Model,Data Entity,,,,Core,Data consumed or produced,,TOGAF
+RT-106,Reference Type,Business,"Products, Customers & Channels",Is Offered Through,Product,Channel,,,,Core,Distribution channel,,Banking
+RT-107,Reference Type,Business,Business Processes & Services,Is Offered Through,Business Service,Channel,,,,Core,Distribution channel,,Banking
+RT-108,Reference Type,Business,"Products, Customers & Channels",Is Delivered By,Product,Business Service,,,,Extended,Product delivered by service,,Banking
+RT-109,Reference Type,Business,"Products, Customers & Channels",Is Offered By,Product,Business Line,,,,Core,Offering line / entity,,Banking
+RT-110,Reference Type,Business,"Products, Customers & Channels",Is Offered By,Product,Legal Entity,,,,Core,Offering line / entity,,Banking
+RT-111,Reference Type,Business,"Products, Customers & Channels",Touches,Journey Stage,Channel,,,,Extended,Channel touchpoint,,Banking CX
+RT-112,Reference Type,Business,Organization & People,Belongs To,Person,Organizational Unit,,,,Core,Membership,,Ardoq Org Modeling
+RT-113,Reference Type,Business,Organization & People,Belongs To,Person,Team,,,,Core,Membership,,Ardoq Org Modeling
+RT-114,Reference Type,Business,Organization & People,Belongs To,Team,Organizational Unit,,,,Core,Team parent unit,,Ardoq Org Modeling
+RT-115,Reference Type,Business,Organization & People,Belongs To,Organizational Unit,Business Line,,,,Core,Matrix alignment to business line,,Banking
+RT-116,Reference Type,Business,Organization & People,Is Conducted By,Business Line,Legal Entity,,,,Core,Legal entity conducting line of business,,Banking / Resolution
+RT-117,Reference Type,Business,Organization & People,Performs,Person,Role,,,,Core,Person holds role,,Ardoq
+RT-118,Reference Type,Business,Organization & People,Is Located At,Organizational Unit,Location,,,,Core,Physical location,,TOGAF
+RT-119,Reference Type,Technology,Technology & Infrastructure,Is Located At,Server,Location,,,,Core,Physical location,,TOGAF
+RT-120,Reference Type,Business,Organization & People,Is Located At,Legal Entity,Location,,,,Core,Physical location,,TOGAF
+RT-121,Reference Type,Business,Organization & People,Operates In,Legal Entity,Jurisdiction,,,,Core,Operating jurisdiction,,Banking
+RT-122,Reference Type,Business,Organization & People,Operates In,Business Line,Jurisdiction,,,,Core,Operating jurisdiction,,Banking
+RT-123,Reference Type,Business,"Products, Customers & Channels",Is Available In,Product,Jurisdiction,,,,Extended,Jurisdictions product is sold in,,Banking
+RT-124,Reference Type,Business,Organization & People,Is Located In,Location,Jurisdiction,,,,Core,Location jurisdiction,,Banking / Data residency
+RT-125,Reference Type,Governance,"Regulations, Policies & Standards",Applies In,Regulation,Jurisdiction,,,,Core,Where regulation applies,,Banking
+RT-126,Reference Type,Business,Business Capabilities & Value Streams,Is Owned By,Business Capability,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-127,Reference Type,Business,Business Processes & Services,Is Owned By,Business Process,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-128,Reference Type,Business,Business Processes & Services,Is Owned By,Business Service,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-129,Reference Type,Business,"Products, Customers & Channels",Is Owned By,Product,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-130,Reference Type,Application,Application Landscape,Is Owned By,Application,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-131,Reference Type,Application,Application Landscape,Is Owned By,Application Module,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-132,Reference Type,Data,Information & Data,Is Owned By,Data Entity,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-133,Reference Type,Data,Information & Data,Is Owned By,Data Domain,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-134,Reference Type,Technology,Technology & Infrastructure,Is Owned By,Technology Service,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-135,Reference Type,Application,Application Landscape,Is Owned By,Interface,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-136,Reference Type,Risk,"Risk, Control & Resilience",Is Owned By,Risk,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-137,Reference Type,Risk,"Risk, Control & Resilience",Is Owned By,Control,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-138,Reference Type,Governance,"Regulations, Policies & Standards",Is Owned By,Policy,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-139,Reference Type,Governance,"Regulations, Policies & Standards",Is Owned By,Standard,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-140,Reference Type,Change,Change & Portfolio,Is Owned By,Initiative,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-141,Reference Type,Risk,"Risk, Control & Resilience",Is Owned By,Model,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-142,Reference Type,Risk,"Risk, Control & Resilience",Is Owned By,Critical or Important Function,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-143,Reference Type,Third Party,Third Parties & Vendors,Is Owned By,Third-Party Arrangement,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-144,Reference Type,Third Party,Third Parties & Vendors,Is Owned By,Vendor,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-145,Reference Type,Governance,"Regulations, Policies & Standards",Is Owned By,Regulatory Report,Person,,,,Core,Accountable owner,,Ardoq Foundation
+RT-146,Reference Type,Business,Business Capabilities & Value Streams,Is Owned By,Business Capability,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-147,Reference Type,Business,Business Processes & Services,Is Owned By,Business Process,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-148,Reference Type,Business,"Products, Customers & Channels",Is Owned By,Product,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-149,Reference Type,Application,Application Landscape,Is Owned By,Application,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-150,Reference Type,Technology,Technology & Infrastructure,Is Owned By,Technology Service,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-151,Reference Type,Data,Information & Data,Is Owned By,Data Domain,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-152,Reference Type,Risk,"Risk, Control & Resilience",Is Owned By,Risk,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-153,Reference Type,Risk,"Risk, Control & Resilience",Is Owned By,Control,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-154,Reference Type,Governance,"Regulations, Policies & Standards",Is Owned By,Policy,Organizational Unit,,,,Core,Owning unit,,Ardoq Foundation
+RT-155,Reference Type,Application,Application Landscape,Is Managed By,Application,Team,,,,Core,Technical custodian / support group,,Ardoq
+RT-156,Reference Type,Application,Application Landscape,Is Managed By,Application,Organizational Unit,,,,Core,Technical custodian / support group,,Ardoq
+RT-157,Reference Type,Technology,Technology & Infrastructure,Is Managed By,Technology Service,Team,,,,Core,Technical custodian / support group,,Ardoq
+RT-158,Reference Type,Technology,Technology & Infrastructure,Is Managed By,Technology Service,Organizational Unit,,,,Core,Technical custodian / support group,,Ardoq
+RT-159,Reference Type,Technology,Technology & Infrastructure,Is Managed By,Server,Team,,,,Core,Technical custodian / support group,,Ardoq
+RT-160,Reference Type,Technology,Technology & Infrastructure,Is Managed By,Server,Organizational Unit,,,,Core,Technical custodian / support group,,Ardoq
+RT-161,Reference Type,Technology,Technology & Infrastructure,Is Managed By,Data Store,Team,,,,Core,Technical custodian / support group,,Ardoq
+RT-162,Reference Type,Technology,Technology & Infrastructure,Is Managed By,Data Store,Organizational Unit,,,,Core,Technical custodian / support group,,Ardoq
+RT-163,Reference Type,Application,Application Landscape,Is Managed By,Interface,Team,,,,Core,Technical custodian / support group,,Ardoq
+RT-164,Reference Type,Application,Application Landscape,Is Managed By,Interface,Organizational Unit,,,,Core,Technical custodian / support group,,Ardoq
+RT-165,Reference Type,Data,Information & Data,Is Stewarded By,Data Entity,Person,,,,Core,Data steward,,DAMA / BCBS 239
+RT-166,Reference Type,Data,Information & Data,Is Stewarded By,Data Domain,Person,,,,Core,Data steward,,DAMA / BCBS 239
+RT-167,Reference Type,Data,Information & Data,Is Stewarded By,Data Element,Person,,,,Core,Data steward,,DAMA / BCBS 239
+RT-168,Reference Type,Business,Organization & People,Is Subject Matter Expert For,Person,Business Capability,,,,Extended,Expertise network,,Ardoq BCR
+RT-169,Reference Type,Business,Organization & People,Is Subject Matter Expert For,Person,Business Process,,,,Extended,Expertise network,,Ardoq BCR
+RT-170,Reference Type,Business,Organization & People,Is Subject Matter Expert For,Person,Application,,,,Extended,Expertise network,,Ardoq BCR
+RT-171,Reference Type,Business,Organization & People,Is Subject Matter Expert For,Person,Technology Service,,,,Extended,Expertise network,,Ardoq BCR
+RT-172,Reference Type,Business,Organization & People,Is Subject Matter Expert For,Person,Data Domain,,,,Extended,Expertise network,,Ardoq BCR
+RT-173,Reference Type,Business,Organization & People,Is Accountable For,Role,Business Capability,,,,Extended,Regulatory accountability (e.g. SM&CR / SMF),,Banking SM&CR
+RT-174,Reference Type,Business,Organization & People,Is Accountable For,Role,Business Process,,,,Extended,Regulatory accountability (e.g. SM&CR / SMF),,Banking SM&CR
+RT-175,Reference Type,Business,Organization & People,Is Accountable For,Role,Critical or Important Function,,,,Extended,Regulatory accountability (e.g. SM&CR / SMF),,Banking SM&CR
+RT-176,Reference Type,Business,Organization & People,Is Accountable For,Role,Risk,,,,Extended,Regulatory accountability (e.g. SM&CR / SMF),,Banking SM&CR
+RT-177,Reference Type,Business,Organization & People,Is Accountable For,Role,Product,,,,Extended,Regulatory accountability (e.g. SM&CR / SMF),,Banking SM&CR
+RT-178,Reference Type,Business,Organization & People,Is Member Of,Person,Governance Body,,,,Extended,Committee membership,,TOGAF
+RT-179,Reference Type,Business,Organization & People,Approves,Governance Body,Architecture Decision Record,,,,Extended,Approval authority,,TOGAF
+RT-180,Reference Type,Business,Organization & People,Approves,Governance Body,Policy,,,,Extended,Approval authority,,TOGAF
+RT-181,Reference Type,Business,Organization & People,Approves,Governance Body,Standard,,,,Extended,Approval authority,,TOGAF
+RT-182,Reference Type,Business,Organization & People,Approves,Governance Body,Initiative,,,,Extended,Approval authority,,TOGAF
+RT-183,Reference Type,Business,Organization & People,Approves,Governance Body,Architecture Pattern,,,,Extended,Approval authority,,TOGAF
+RT-184,Reference Type,Application,Application Landscape,Accesses,Application,Data Entity,,,,Core,CRUD access to data,,Ardoq / TOGAF
+RT-185,Reference Type,Application,Application Landscape,Accesses,Application Module,Data Entity,,,,Core,CRUD access to data,,Ardoq / TOGAF
+RT-186,Reference Type,Data,Information & Data,Is Stored In,Data Entity,Data Store,,,,Core,Physical storage of data,,TOGAF
+RT-187,Reference Type,Data,Information & Data,Is Stored In,Data Element,Data Store,,,,Core,Physical storage of data,,TOGAF
+RT-188,Reference Type,Data,Information & Data,Is Mastered By,Data Entity,Application,,,,Core,Golden source / system of record,,BCBS 239
+RT-189,Reference Type,Data,Information & Data,Is Mastered By,Data Domain,Application,,,,Core,Golden source / system of record,,BCBS 239
+RT-190,Reference Type,Application,Application Landscape,Carries,Interface,Data Entity,,,,Core,Data carried by an interface,,Ardoq
+RT-191,Reference Type,Data,Information & Data,Feeds,Data Element,Regulatory Report,,,,Core,Data lineage to regulatory reports,,BCBS 239
+RT-192,Reference Type,Data,Information & Data,Feeds,Data Entity,Regulatory Report,,,,Core,Data lineage to regulatory reports,,BCBS 239
+RT-193,Reference Type,Data,Information & Data,Is Derived From,Data Element,Data Element,,,,Extended,Derived attribute,,BCBS 239
+RT-194,Reference Type,Data,Information & Data,Is Derived From,Data Product,Data Entity,,,,Extended,Data product source,,Data Mesh
+RT-195,Reference Type,Data,Information & Data,Is Derived From,Data Product,Data Store,,,,Extended,Data product source,,Data Mesh
+RT-196,Reference Type,Application,Application Landscape,Sends Data To,Application,Application,,,,Core,Data flow / lineage,,Ardoq Data Lineage
+RT-197,Reference Type,Application,Application Landscape,Sends Data To,Application,Data Store,,,,Core,Data flow / lineage,,Ardoq Data Lineage
+RT-198,Reference Type,Technology,Technology & Infrastructure,Sends Data To,Data Store,Application,,,,Core,Data flow / lineage,,Ardoq Data Lineage
+RT-199,Reference Type,Technology,Technology & Infrastructure,Sends Data To,Data Store,Data Store,,,,Core,Data flow / lineage,,Ardoq Data Lineage
+RT-200,Reference Type,Application,Application Landscape,Exposes,Application,Interface,,,,Core,Provider of interface,,Ardoq
+RT-201,Reference Type,Application,Application Landscape,Exposes,Application Module,Interface,,,,Core,Provider of interface,,Ardoq
+RT-202,Reference Type,Application,Application Landscape,Consumes,Application,Interface,,,,Core,Consumer of interface,,Ardoq
+RT-203,Reference Type,Application,Application Landscape,Consumes,Application Module,Interface,,,,Core,Consumer of interface,,Ardoq
+RT-204,Reference Type,Application,Application Landscape,Is Provided By,Application Service,Application,,,,Extended,Service provider,,ArchiMate
+RT-205,Reference Type,Application,Application Landscape,Is Provided By,Application Service,Application Module,,,,Extended,Service provider,,ArchiMate
+RT-206,Reference Type,Application,Application Landscape,Implements,Application,BIAN Service Domain,,,,Core,Application implements BIAN service domain,Core banking implements Current Account,BIAN
+RT-207,Reference Type,Application,Application Landscape,Implements,Application Module,BIAN Service Domain,,,,Core,Application implements BIAN service domain,Core banking implements Current Account,BIAN
+RT-208,Reference Type,Application,Application Landscape,Implements,Interface,BIAN Service Operation,,,,Extended,Interface realises BIAN service operation,,BIAN
+RT-209,Reference Type,Application,Application Landscape,Implements,Application Service,BIAN Service Operation,,,,Extended,Interface realises BIAN service operation,,BIAN
+RT-210,Reference Type,Governance,"Regulations, Policies & Standards",Implements,Policy,Requirement,,,,Core,Policy implements obligation,,DORA
+RT-211,Reference Type,Governance,"Regulations, Policies & Standards",Implements,Policy,Regulation,,,,Core,Policy implements obligation,,DORA
+RT-212,Reference Type,Governance,"Regulations, Policies & Standards",Implements,Standard,Policy,,,,Extended,Standard implements policy,,TOGAF
+RT-213,Reference Type,Business,Business Capabilities & Value Streams,Is Aligned To,Business Capability,BIAN Service Domain,,,,Core,Capability to BIAN mapping,,BIAN
+RT-214,Reference Type,Business,Business Capabilities & Value Streams,Is Aligned To,Business Capability,BIAN Business Domain,,,,Core,Capability to BIAN mapping,,BIAN
+RT-215,Reference Type,Application,Application Landscape,Has Successor,Application,Application,,,,Core,Planned replacement,,Ardoq
+RT-216,Reference Type,Technology,Technology & Infrastructure,Has Successor,Technology Product,Technology Product,,,,Extended,Product succession,,Ardoq TPM
+RT-217,Reference Type,Technology,Technology & Infrastructure,Has Successor,Technology Service,Technology Service,,,,Extended,Service succession,,Ardoq
+RT-218,Reference Type,Application,Application Landscape,Is Hosted On,Application,Server,,,,Core,Hosting,,Ardoq
+RT-219,Reference Type,Application,Application Landscape,Is Hosted On,Application,Cloud Account,,,,Core,Hosting,,Ardoq
+RT-220,Reference Type,Application,Application Landscape,Is Hosted On,Application,Technology Service,,,,Core,Hosting,,Ardoq
+RT-221,Reference Type,Application,Application Landscape,Is Hosted On,Application Module,Server,,,,Core,Hosting,,Ardoq
+RT-222,Reference Type,Application,Application Landscape,Is Hosted On,Application Module,Cloud Account,,,,Core,Hosting,,Ardoq
+RT-223,Reference Type,Application,Application Landscape,Is Hosted On,Application Module,Technology Service,,,,Core,Hosting,,Ardoq
+RT-224,Reference Type,Technology,Technology & Infrastructure,Is Hosted On,Data Store,Server,,,,Core,Hosting,,Ardoq
+RT-225,Reference Type,Technology,Technology & Infrastructure,Is Hosted On,Data Store,Cloud Account,,,,Core,Hosting,,Ardoq
+RT-226,Reference Type,Technology,Technology & Infrastructure,Is Hosted On,Technology Service,Server,,,,Core,Hosting,,Ardoq
+RT-227,Reference Type,Technology,Technology & Infrastructure,Is Hosted On,Technology Service,Cloud Account,,,,Core,Hosting,,Ardoq
+RT-228,Reference Type,Application,Application Landscape,Is Instance Of,Application,Technology Product,,,,Core,Operational instance of a product,,Ardoq TPM
+RT-229,Reference Type,Technology,Technology & Infrastructure,Is Instance Of,Technology Service,Technology Product,,,,Core,Operational instance of a product,,Ardoq TPM
+RT-230,Reference Type,Technology,Technology & Infrastructure,Is Instance Of,Server,Technology Product,,,,Core,Operational instance of a product,,Ardoq TPM
+RT-231,Reference Type,Technology,Technology & Infrastructure,Is Instance Of,Data Store,Technology Product,,,,Core,Operational instance of a product,,Ardoq TPM
+RT-232,Reference Type,Application,Application Landscape,Is Supplied By,Application,Vendor,,,,Core,Supplier,,Ardoq / DORA
+RT-233,Reference Type,Technology,Technology & Infrastructure,Is Supplied By,Technology Product,Vendor,,,,Core,Supplier,,Ardoq / DORA
+RT-234,Reference Type,Technology,Technology & Infrastructure,Is Supplied By,Technology Service,Vendor,,,,Core,Supplier,,Ardoq / DORA
+RT-235,Reference Type,Technology,Technology & Infrastructure,Is Supplied By,Cloud Account,Vendor,,,,Core,Supplier,,Ardoq / DORA
+RT-236,Reference Type,Technology,Technology & Infrastructure,Resides In,Server,Network Zone,,,,Extended,Network placement,,TOGAF
+RT-237,Reference Type,Technology,Technology & Infrastructure,Resides In,Data Store,Network Zone,,,,Extended,Network placement,,TOGAF
+RT-238,Reference Type,Technology,Technology & Infrastructure,Connects To,Network Zone,Network Zone,,,,Extended,Zone connectivity,,TOGAF
+RT-239,Reference Type,Application,Application Landscape,Connects To,Application,Payment & Market Infrastructure,,,,Core,Connectivity to scheme / FMI,,Banking
+RT-240,Reference Type,Application,Application Landscape,Connects To,Application Module,Payment & Market Infrastructure,,,,Core,Connectivity to scheme / FMI,,Banking
+RT-241,Reference Type,Business,Organization & People,Is Participant In,Legal Entity,Payment & Market Infrastructure,,,,Core,Scheme membership,,Banking
+RT-242,Reference Type,Governance,"Regulations, Policies & Standards",Is Issued By,Regulation,Regulatory Authority,,,,Core,Issuing authority,,Banking
+RT-243,Reference Type,Business,Organization & People,Is Regulated By,Legal Entity,Regulatory Authority,,,,Core,Supervisory authority,,Banking
+RT-244,Reference Type,Governance,"Regulations, Policies & Standards",Is Submitted To,Regulatory Report,Regulatory Authority,,,,Core,Report recipient,,Banking
+RT-245,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Regulation,Legal Entity,,,,Core,Regulation scope,,DORA
+RT-246,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Regulation,Business Line,,,,Core,Regulation scope,,DORA
+RT-247,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Regulation,Product,,,,Core,Regulation scope,,DORA
+RT-248,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Regulation,Business Process,,,,Core,Regulation scope,,DORA
+RT-249,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Regulation,Application,,,,Core,Regulation scope,,DORA
+RT-250,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Regulation,Data Entity,,,,Core,Regulation scope,,DORA
+RT-251,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Requirement,Business Capability,,,,Core,Requirement scope,,DORA
+RT-252,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Requirement,Business Process,,,,Core,Requirement scope,,DORA
+RT-253,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Requirement,Application,,,,Core,Requirement scope,,DORA
+RT-254,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Requirement,Data Entity,,,,Core,Requirement scope,,DORA
+RT-255,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Requirement,Third-Party Arrangement,,,,Core,Requirement scope,,DORA
+RT-256,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Policy,Business Line,,,,Extended,Policy scope,,Ardoq
+RT-257,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Policy,Business Process,,,,Extended,Policy scope,,Ardoq
+RT-258,Reference Type,Governance,"Regulations, Policies & Standards",Applies To,Policy,Application,,,,Extended,Policy scope,,Ardoq
+RT-259,Reference Type,Governance,"Regulations, Policies & Standards",Is Satisfied By,Requirement,Control,,,,Core,Requirement coverage,,DORA
+RT-260,Reference Type,Governance,"Regulations, Policies & Standards",Is Satisfied By,Requirement,Policy,,,,Core,Requirement coverage,,DORA
+RT-261,Reference Type,Governance,"Regulations, Policies & Standards",Is Satisfied By,Requirement,Business Process,,,,Core,Requirement coverage,,DORA
+RT-262,Reference Type,Governance,"Regulations, Policies & Standards",Is Satisfied By,Requirement,Application,,,,Core,Requirement coverage,,DORA
+RT-263,Reference Type,Risk,"Risk, Control & Resilience",Mitigates,Control,Risk,,,,Core,Control mitigates risk,,GRC
+RT-264,Reference Type,Risk,"Risk, Control & Resilience",Is Implemented By,Control,Business Process,,,,Core,Control execution,,GRC
+RT-265,Reference Type,Risk,"Risk, Control & Resilience",Is Implemented By,Control,Application,,,,Core,Control execution,,GRC
+RT-266,Reference Type,Risk,"Risk, Control & Resilience",Is Implemented By,Control,Technology Service,,,,Core,Control execution,,GRC
+RT-267,Reference Type,Risk,"Risk, Control & Resilience",Is Implemented By,Control,Organizational Unit,,,,Core,Control execution,,GRC
+RT-268,Reference Type,Risk,"Risk, Control & Resilience",Affects,Risk,Business Capability,,,,Core,Risk exposure,,GRC
+RT-269,Reference Type,Risk,"Risk, Control & Resilience",Affects,Risk,Business Process,,,,Core,Risk exposure,,GRC
+RT-270,Reference Type,Risk,"Risk, Control & Resilience",Affects,Risk,Application,,,,Core,Risk exposure,,GRC
+RT-271,Reference Type,Risk,"Risk, Control & Resilience",Affects,Risk,Product,,,,Core,Risk exposure,,GRC
+RT-272,Reference Type,Risk,"Risk, Control & Resilience",Affects,Risk,Critical or Important Function,,,,Core,Risk exposure,,GRC
+RT-273,Reference Type,Risk,"Risk, Control & Resilience",Affects,Risk,Third-Party Arrangement,,,,Core,Risk exposure,,GRC
+RT-274,Reference Type,Risk,"Risk, Control & Resilience",Affects,Risk,Legal Entity,,,,Core,Risk exposure,,GRC
+RT-275,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Application,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-276,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Business Process,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-277,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Business Capability,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-278,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Vendor,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-279,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Third-Party Arrangement,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-280,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Initiative,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-281,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Critical or Important Function,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-282,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Control,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-283,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Risk,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-284,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Model,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-285,Reference Type,Risk,"Risk, Control & Resilience",Assesses,Assessment,Technology Service,,,,Core,Assessment subject,,Ardoq Architecture Records
+RT-286,Reference Type,Risk,"Risk, Control & Resilience",Raises,Assessment,Issue,,,,Core,Assessment produced finding,,GRC
+RT-287,Reference Type,Risk,"Risk, Control & Resilience",Is Raised Against,Issue,Application,,,,Core,Subject of finding,,GRC
+RT-288,Reference Type,Risk,"Risk, Control & Resilience",Is Raised Against,Issue,Business Process,,,,Core,Subject of finding,,GRC
+RT-289,Reference Type,Risk,"Risk, Control & Resilience",Is Raised Against,Issue,Control,,,,Core,Subject of finding,,GRC
+RT-290,Reference Type,Risk,"Risk, Control & Resilience",Is Raised Against,Issue,Third-Party Arrangement,,,,Core,Subject of finding,,GRC
+RT-291,Reference Type,Risk,"Risk, Control & Resilience",Is Raised Against,Issue,Requirement,,,,Core,Subject of finding,,GRC
+RT-292,Reference Type,Risk,"Risk, Control & Resilience",Is Raised Against,Issue,Model,,,,Core,Subject of finding,,GRC
+RT-293,Reference Type,Risk,"Risk, Control & Resilience",Is Raised Against,Issue,Technology Service,,,,Core,Subject of finding,,GRC
+RT-294,Reference Type,Risk,"Risk, Control & Resilience",Is Remediated By,Issue,Initiative,,,,Core,Remediation initiative,,GRC
+RT-295,Reference Type,Risk,"Risk, Control & Resilience",Impacted,Incident,Application,,,,Core,Incident impact,,DORA / ITIL
+RT-296,Reference Type,Risk,"Risk, Control & Resilience",Impacted,Incident,Technology Service,,,,Core,Incident impact,,DORA / ITIL
+RT-297,Reference Type,Risk,"Risk, Control & Resilience",Impacted,Incident,Critical or Important Function,,,,Core,Incident impact,,DORA / ITIL
+RT-298,Reference Type,Risk,"Risk, Control & Resilience",Impacted,Incident,Business Service,,,,Core,Incident impact,,DORA / ITIL
+RT-299,Reference Type,Risk,"Risk, Control & Resilience",Impacted,Incident,Third-Party Arrangement,,,,Core,Incident impact,,DORA / ITIL
+RT-300,Reference Type,Risk,"Risk, Control & Resilience",Impacted,Incident,Product,,,,Core,Incident impact,,DORA / ITIL
+RT-301,Reference Type,Risk,"Risk, Control & Resilience",Has Root Cause In,Incident,Application,,,,Extended,Root cause,,ITIL
+RT-302,Reference Type,Risk,"Risk, Control & Resilience",Has Root Cause In,Incident,Technology Service,,,,Extended,Root cause,,ITIL
+RT-303,Reference Type,Risk,"Risk, Control & Resilience",Has Root Cause In,Incident,Vendor,,,,Extended,Root cause,,ITIL
+RT-304,Reference Type,Risk,"Risk, Control & Resilience",Has Root Cause In,Incident,Third-Party Arrangement,,,,Extended,Root cause,,ITIL
+RT-305,Reference Type,Risk,"Risk, Control & Resilience",Gave Rise To,Incident,Issue,,,,Extended,Incident to issue,,GRC
+RT-306,Reference Type,Risk,"Risk, Control & Resilience",Is Deployed In,Model,Application,,,,Extended,Model deployment,,SR 11-7
+RT-307,Reference Type,Change,Change & Portfolio,Is Recorded Against,Technical Debt,Application,,,,Extended,Debt location,,Ardoq Architecture Records
+RT-308,Reference Type,Change,Change & Portfolio,Is Recorded Against,Technical Debt,Technology Service,,,,Extended,Debt location,,Ardoq Architecture Records
+RT-309,Reference Type,Change,Change & Portfolio,Is Recorded Against,Technical Debt,Interface,,,,Extended,Debt location,,Ardoq Architecture Records
+RT-310,Reference Type,Change,Change & Portfolio,Is Recorded Against,Technical Debt,Server,,,,Extended,Debt location,,Ardoq Architecture Records
+RT-311,Reference Type,Change,Change & Portfolio,Is Recorded Against,Technical Debt,Data Store,,,,Extended,Debt location,,Ardoq Architecture Records
+RT-312,Reference Type,Risk,"Risk, Control & Resilience",Maps To,Critical or Important Function,Business Capability,,,,Core,Function mapping,,DORA / UK Op-Res
+RT-313,Reference Type,Risk,"Risk, Control & Resilience",Maps To,Critical or Important Function,Business Service,,,,Core,Function mapping,,DORA / UK Op-Res
+RT-314,Reference Type,Third Party,Third Parties & Vendors,Is With,Third-Party Arrangement,Vendor,,,,Core,Contract counterparty,,DORA RoI
+RT-315,Reference Type,Third Party,Third Parties & Vendors,Covers,Third-Party Arrangement,Application,,,,Core,Scope of arrangement,,DORA RoI
+RT-316,Reference Type,Third Party,Third Parties & Vendors,Covers,Third-Party Arrangement,Technology Service,,,,Core,Scope of arrangement,,DORA RoI
+RT-317,Reference Type,Third Party,Third Parties & Vendors,Covers,Third-Party Arrangement,Cloud Account,,,,Core,Scope of arrangement,,DORA RoI
+RT-318,Reference Type,Third Party,Third Parties & Vendors,Covers,Third-Party Arrangement,Business Process,,,,Core,Scope of arrangement,,DORA RoI
+RT-319,Reference Type,Third Party,Third Parties & Vendors,Covers,Third-Party Arrangement,Business Service,,,,Core,Scope of arrangement,,DORA RoI
+RT-320,Reference Type,Third Party,Third Parties & Vendors,Covers,Third-Party Arrangement,Technology Product,,,,Core,Scope of arrangement,,DORA RoI
+RT-321,Reference Type,Third Party,Third Parties & Vendors,Subcontracts To,Vendor,Vendor,,,,Core,Subcontractor chain (4th party),,DORA
+RT-322,Reference Type,Third Party,Third Parties & Vendors,Subcontracts To,Third-Party Arrangement,Vendor,,,,Core,Subcontractor chain (4th party),,DORA
+RT-323,Reference Type,Governance,Architecture Governance & Patterns,Supersedes,Architecture Decision Record,Architecture Decision Record,,,,Extended,ADR succession,,Ardoq
+RT-324,Reference Type,Governance,Architecture Governance & Patterns,References,Design Object,(Any Component Type),,,,Extended,Weakly-typed reference,,Ardoq Reference Architectures
+RT-325,Reference Type,Governance,Architecture Governance & Patterns,References,Architecture Decision Record,(Any Component Type),,,,Extended,Weakly-typed reference,,Ardoq Reference Architectures
+RT-326,Reference Type,Governance,Architecture Governance & Patterns,Is Applied In,Architecture Pattern,Application,,,,Extended,Pattern usage,,Ardoq
+RT-327,Reference Type,Governance,Architecture Governance & Patterns,Is Applied In,Architecture Pattern,Initiative,,,,Extended,Pattern usage,,Ardoq
+RT-328,Reference Type,Governance,Architecture Governance & Patterns,Is Applied In,Architecture Pattern,Technology Service,,,,Extended,Pattern usage,,Ardoq
+FD-0001,Field (Common),All,All Workspaces,Lifecycle Status,(All Component Types),,List,Proposed;Planned;Active;Phasing Out;Retired,Y,Core,"Applies to every component type; ownership is modelled with references, not text fields.",,
+FD-0002,Field (Common),All,All Workspaces,External ID,(All Component Types),,Text,"ID in source system, CMDB, GRC or BIAN",N,Core,"Applies to every component type; ownership is modelled with references, not text fields.",,
+FD-0003,Field (Common),All,All Workspaces,Source of Record,(All Component Types),,Text,System the data was imported from,N,Core,"Applies to every component type; ownership is modelled with references, not text fields.",,
+FD-0004,Field (Common),All,All Workspaces,Last Reviewed Date,(All Component Types),,Date,,N,Core,"Applies to every component type; ownership is modelled with references, not text fields.",,
+FD-0005,Field (Common),All,All Workspaces,Data Quality Rating,(All Component Types),,List,High;Medium;Low,N,Core,"Applies to every component type; ownership is modelled with references, not text fields.",,
+FD-0006,Field (Component),Business,Strategy & Motivation,Strategy Horizon,Strategy,,List,Short (<1y);Medium (1-3y);Long (3y+),N,Extended,,,
+FD-0007,Field (Component),Business,Strategy & Motivation,Plan Start Date,Strategy,,Date,,N,Extended,,,
+FD-0008,Field (Component),Business,Strategy & Motivation,Plan End Date,Strategy,,Date,,N,Extended,,,
+FD-0009,Field (Component),Business,Strategy & Motivation,Approval Status,Strategy,,List,Draft;Approved;Superseded,N,Extended,,,
+FD-0010,Field (Component),Business,Strategy & Motivation,Driver Category,Driver,,List,Regulatory;Market;Technology;Customer;Competitive;Economic;Operational;ESG/Climate;Geopolitical,N,Extended,,,
+FD-0011,Field (Component),Business,Strategy & Motivation,Objective Type,Objective,,List,Financial;Customer;Operational;Risk & Compliance;People;Technology;ESG,N,Extended,,,
+FD-0012,Field (Component),Business,Strategy & Motivation,Priority,Objective,,List,Critical;High;Medium;Low,N,Extended,,,
+FD-0013,Field (Component),Business,Strategy & Motivation,Objective Status,Objective,,List,Not Started;On Track;At Risk;Off Track;Achieved,N,Extended,,,
+FD-0014,Field (Component),Business,Strategy & Motivation,Target Date,Objective,,Date,,N,Extended,,,
+FD-0015,Field (Component),Business,Strategy & Motivation,Strategic Theme,Objective,,Text,,N,Extended,,,
+FD-0016,Field (Component),Business,Strategy & Motivation,Metric Unit,Key Result,,Text,,N,Extended,,,
+FD-0017,Field (Component),Business,Strategy & Motivation,Baseline Value,Key Result,,Number,,N,Extended,,,
+FD-0018,Field (Component),Business,Strategy & Motivation,Current Value,Key Result,,Number,,N,Extended,,,
+FD-0019,Field (Component),Business,Strategy & Motivation,Target Value,Key Result,,Number,,N,Extended,,,
+FD-0020,Field (Component),Business,Strategy & Motivation,Due Date,Key Result,,Date,,N,Extended,,,
+FD-0021,Field (Component),Business,Strategy & Motivation,Progress (%),Key Result,,Number (Calculated),Calculated from baseline/current/target,N,Extended,,,
+FD-0022,Field (Component),Business,Business Capabilities & Value Streams,Capability Level,Business Capability,,List,L1;L2;L3;L4,Y,Core,,,
+FD-0023,Field (Component),Business,Business Capabilities & Value Streams,Capability Domain,Business Capability,,List,Customer Management;Product & Pricing;Sales & Distribution;Lending & Credit;Deposits & Accounts;Payments & Transaction Services;Cards;Treasury & Markets;Trade Finance;Wealth & Investments;Finance & Accounting;Risk Management;Compliance & Financial Crime;Operations & Servicing;Data & Analytics;Technology & Security;HR;Procurement & Vendor Mgmt;Legal;Corporate Strategy,N,Extended,,,
+FD-0024,Field (Component),Business,Business Capabilities & Value Streams,Strategic Importance,Business Capability,,List,Differentiating;Core;Supporting;Commodity,N,Extended,,,
+FD-0025,Field (Component),Business,Business Capabilities & Value Streams,Maturity Level,Business Capability,,List,1 - Initial;2 - Developing;3 - Defined;4 - Managed;5 - Optimised,N,Extended,,,
+FD-0026,Field (Component),Business,Business Capabilities & Value Streams,Performance Rating,Business Capability,,List,Red;Amber;Green,N,Extended,,,
+FD-0027,Field (Component),Business,Business Capabilities & Value Streams,Investment Posture,Business Capability,,List,Invest;Maintain;Harvest;Divest,N,Extended,,,
+FD-0028,Field (Component),Business,Business Capabilities & Value Streams,Regulatory Critical,Business Capability,,Checkbox,,N,Extended,,,
+FD-0029,Field (Component),Business,Business Capabilities & Value Streams,BIAN Reference ID,Business Capability,,Text,,N,Extended,,,
+FD-0030,Field (Component),Business,Business Capabilities & Value Streams,Supporting Application Count,Business Capability,,Number (Calculated),Count of Is Realized By references,N,Extended,,,
+FD-0031,Field (Component),Business,Business Capabilities & Value Streams,Value Stream Type,Value Stream,,List,Customer-Facing;Internal Support,N,Extended,,,
+FD-0032,Field (Component),Business,Business Capabilities & Value Streams,Value Outcome,Value Stream,,Text Area,,N,Extended,,,
+FD-0033,Field (Component),Business,Business Capabilities & Value Streams,Target Cycle Time,Value Stream,,Text,,N,Extended,,,
+FD-0034,Field (Component),Business,Business Capabilities & Value Streams,Stage Sequence,Value Stream Stage,,Number,,Y,Core,,,
+FD-0035,Field (Component),Business,Business Capabilities & Value Streams,Entry Criteria,Value Stream Stage,,Text,,N,Extended,,,
+FD-0036,Field (Component),Business,Business Capabilities & Value Streams,Exit Criteria,Value Stream Stage,,Text,,N,Extended,,,
+FD-0037,Field (Component),Business,Business Processes & Services,Process Level,Business Process,,List,L1;L2;L3;L4,Y,Core,,,
+FD-0038,Field (Component),Business,Business Processes & Services,Process Type,Business Process,,List,Core;Management;Support,N,Extended,,,
+FD-0039,Field (Component),Business,Business Processes & Services,Automation Level,Business Process,,List,Manual;Partially Automated;Fully Automated,N,Extended,,,
+FD-0040,Field (Component),Business,Business Processes & Services,Process Frequency,Business Process,,List,Real-Time;Near Real-Time;Intraday;Daily;Weekly;Monthly;Quarterly;Annually;On Demand,N,Extended,,,
+FD-0041,Field (Component),Business,Business Processes & Services,Average Monthly Volume,Business Process,,Number,,N,Extended,,,
+FD-0042,Field (Component),Business,Business Processes & Services,Business Criticality,Business Process,,List,Tier 0 - Systemically Critical;Tier 1 - Critical;Tier 2 - Important;Tier 3 - Standard;Tier 4 - Low,N,Extended,,,
+FD-0043,Field (Component),Business,Business Processes & Services,Straight-Through Processing Rate (%),Business Process,,Number,0-100,N,Extended,,,
+FD-0044,Field (Component),Business,Business Processes & Services,Target SLA,Business Process,,Text,,N,Extended,,,
+FD-0045,Field (Component),Business,Business Processes & Services,Process Documentation Link,Business Process,,URL,,N,Extended,,,
+FD-0046,Field (Component),Business,Business Processes & Services,Regulatory Scope,Business Process,,Multi-select List,SOX;PCI DSS;GDPR;DORA;NIS2;BCBS 239;PSD2/PSD3;MiFID II;Basel III/IV;IFRS 9;SR 11-7;AML/CTF;FATCA/CRS;GLBA;EU AI Act,N,Extended,,,
+FD-0047,Field (Component),Business,Business Processes & Services,Service Type,Business Service,,List,Customer-Facing;Internal;Outsourced,N,Extended,,,
+FD-0048,Field (Component),Business,Business Processes & Services,Service Tier,Business Service,,List,Tier 0 - Systemically Critical;Tier 1 - Critical;Tier 2 - Important;Tier 3 - Standard;Tier 4 - Low,N,Extended,,,
+FD-0049,Field (Component),Business,Business Processes & Services,Is Important Business Service,Business Service,,Checkbox,UK PRA/FCA operational resilience designation,N,Extended,,,
+FD-0050,Field (Component),Business,Business Processes & Services,Availability Target (%),Business Service,,Number,,N,Extended,,,
+FD-0051,Field (Component),Business,Business Processes & Services,Service Hours,Business Service,,List,24x7;Extended Hours;Business Hours,N,Extended,,,
+FD-0052,Field (Component),Business,Business Processes & Services,Event Type,Business Event,,List,Customer-Initiated;Time-Based;Regulatory;System-Generated;External,N,Extended,,,
+FD-0053,Field (Component),Business,"Products, Customers & Channels",Product Family,Product Category,,List,Deposits & Savings;Lending & Credit;Cards;Payments;Trade & Supply Chain Finance;Treasury & Markets;Wealth & Investments;Insurance;Digital Assets;Fees & Services,N,Extended,,,
+FD-0054,Field (Component),Business,"Products, Customers & Channels",Product Code,Product,,Text,,N,Extended,,,
+FD-0055,Field (Component),Business,"Products, Customers & Channels",Product Family,Product,,List,Deposits & Savings;Lending & Credit;Cards;Payments;Trade & Supply Chain Finance;Treasury & Markets;Wealth & Investments;Insurance;Digital Assets;Fees & Services,N,Extended,,,
+FD-0056,Field (Component),Business,"Products, Customers & Channels",Product Status,Product,,List,Concept;In Development;Active;Closed to New Business;Withdrawn,N,Extended,,,
+FD-0057,Field (Component),Business,"Products, Customers & Channels",Balance Sheet Treatment,Product,,List,Asset;Liability;Off-Balance Sheet;Fee/Commission,N,Extended,,,
+FD-0058,Field (Component),Business,"Products, Customers & Channels",Launch Date,Product,,Date,,N,Extended,,,
+FD-0059,Field (Component),Business,"Products, Customers & Channels",Withdrawal Date,Product,,Date,,N,Extended,,,
+FD-0060,Field (Component),Business,"Products, Customers & Channels",Customer Count,Product,,Number,,N,Extended,,,
+FD-0061,Field (Component),Business,"Products, Customers & Channels",Segment Type,Customer Segment,,List,Retail Mass Market;Mass Affluent;Private Banking / HNW;Small Business;SME;Mid-Corporate;Large Corporate;Financial Institutions;Public Sector,N,Extended,,,
+FD-0062,Field (Component),Business,"Products, Customers & Channels",Regulatory Classification,Customer Segment,,List,Retail;Professional;Eligible Counterparty,N,Extended,,,
+FD-0063,Field (Component),Business,"Products, Customers & Channels",Customer Count,Customer Segment,,Number,,N,Extended,,,
+FD-0064,Field (Component),Business,"Products, Customers & Channels",Strategic Priority,Customer Segment,,List,High;Medium;Low,N,Extended,,,
+FD-0065,Field (Component),Business,"Products, Customers & Channels",Channel Type,Channel,,List,Branch;ATM / Cash Recycler;Online Banking;Mobile App;Contact Centre;Relationship Manager;Open Banking API;Partner / Agent;Embedded Finance;Kiosk,Y,Core,,,
+FD-0066,Field (Component),Business,"Products, Customers & Channels",Channel Mode,Channel,,List,Assisted;Self-Service;Straight-Through,N,Extended,,,
+FD-0067,Field (Component),Business,"Products, Customers & Channels",Active Users,Channel,,Number,,N,Extended,,,
+FD-0068,Field (Component),Business,"Products, Customers & Channels",Journey Type,Customer Journey,,List,Onboarding;Servicing;Lending Origination;Payments;Dispute & Complaint;Collections;Offboarding,N,Extended,,,
+FD-0069,Field (Component),Business,"Products, Customers & Channels",Customer Satisfaction Score,Customer Journey,,Number,,N,Extended,,,
+FD-0070,Field (Component),Business,"Products, Customers & Channels",Stage Sequence,Journey Stage,,Number,,Y,Core,,,
+FD-0071,Field (Component),Business,"Products, Customers & Channels",Pain Point Rating,Journey Stage,,List,Low;Medium;High,N,Extended,,,
+FD-0072,Field (Component),Business,"Products, Customers & Channels",Infrastructure Type,Payment & Market Infrastructure,,List,RTGS;ACH / Batch Clearing;Instant Payments;Card Network;Messaging Network;Securities Settlement (CSD);Central Counterparty (CCP);Central Bank Facility;Trade Repository;Exchange / Trading Venue,Y,Core,,,
+FD-0073,Field (Component),Business,"Products, Customers & Channels",Operator,Payment & Market Infrastructure,,Text,,N,Extended,,,
+FD-0074,Field (Component),Business,"Products, Customers & Channels",Region / Scope,Payment & Market Infrastructure,,Text,,N,Extended,,,
+FD-0075,Field (Component),Business,"Products, Customers & Channels",Message Standard,Payment & Market Infrastructure,,List,ISO 20022;SWIFT MT;ISO 8583;FIX;Proprietary,N,Extended,,,
+FD-0076,Field (Component),Business,"Products, Customers & Channels",Operating Hours,Payment & Market Infrastructure,,Text,,N,Extended,,,
+FD-0077,Field (Component),Business,"Products, Customers & Channels",Participation Required,Payment & Market Infrastructure,,Checkbox,,N,Extended,,,
+FD-0078,Field (Component),Business,Organization & People,Group LEI,Organization,,Text,,N,Extended,,,
+FD-0079,Field (Component),Business,Organization & People,Registered Name,Organization,,Text,,N,Extended,,,
+FD-0080,Field (Component),Business,Organization & People,Legal Entity Identifier (LEI),Legal Entity,,Text,20-character LEI,N,Extended,,,
+FD-0081,Field (Component),Business,Organization & People,Entity Type,Legal Entity,,List,Bank;Branch of Foreign Bank;Broker-Dealer;Asset Manager;Insurance Undertaking;Payment Institution;E-Money Institution;Holding Company;Special Purpose Vehicle;Service Company,Y,Core,,,
+FD-0082,Field (Component),Business,Organization & People,Licence Type,Legal Entity,,Text,,N,Extended,,,
+FD-0083,Field (Component),Business,Organization & People,Incorporation Country,Legal Entity,,Text,ISO 3166 code,N,Extended,,,
+FD-0084,Field (Component),Business,Organization & People,Systemic Importance,Legal Entity,,List,G-SIB;D-SIB;Not Designated,N,Extended,,,
+FD-0085,Field (Component),Business,Organization & People,Is Material Legal Entity,Legal Entity,,Checkbox,Resolution planning,N,Extended,,,
+FD-0086,Field (Component),Business,Organization & People,Is Resolution Entity,Legal Entity,,Checkbox,,N,Extended,,,
+FD-0087,Field (Component),Business,Organization & People,Reporting Currency,Legal Entity,,Text,ISO 4217,N,Extended,,,
+FD-0088,Field (Component),Business,Organization & People,Business Line Type,Business Line,,List,Retail Banking;Commercial Banking;Corporate Finance;Trading & Sales;Payment & Settlement;Agency Services;Asset Management;Retail Brokerage;Wealth Management;Treasury;Insurance;Corporate Centre,N,Extended,,,
+FD-0089,Field (Component),Business,Organization & People,Is Core Business Line,Business Line,,Checkbox,Resolution planning,N,Extended,,,
+FD-0090,Field (Component),Business,Organization & People,Unit Type,Organizational Unit,,List,Division;Department;Branch;Shared Service Centre;Centre of Excellence,N,Extended,,,
+FD-0091,Field (Component),Business,Organization & People,Cost Centre Code,Organizational Unit,,Text,,N,Extended,,,
+FD-0092,Field (Component),Business,Organization & People,Headcount,Organizational Unit,,Number,,N,Extended,,,
+FD-0093,Field (Component),Business,Organization & People,Line of Defence,Organizational Unit,,List,1st Line;2nd Line;3rd Line;Not Applicable,N,Extended,,,
+FD-0094,Field (Component),Business,Organization & People,Team Type,Team,,List,Delivery;Support;Operations;Architecture;Product,N,Extended,,,
+FD-0095,Field (Component),Business,Organization & People,Headcount,Team,,Number,,N,Extended,,,
+FD-0096,Field (Component),Business,Organization & People,Job Title,Person,,Text,,N,Extended,,,
+FD-0097,Field (Component),Business,Organization & People,Email Address,Person,,Email,,N,Extended,,,
+FD-0098,Field (Component),Business,Organization & People,Employment Type,Person,,List,Employee;Contractor;Consultant,N,Extended,,,
+FD-0099,Field (Component),Business,Organization & People,Directory ID,Person,,Text,Corporate directory identifier,N,Extended,,,
+FD-0100,Field (Component),Business,Organization & People,Role Category,Role,,List,Architecture;Business Ownership;Data Governance;Risk & Control;Technology Operations;Regulatory Accountability;Delivery,N,Extended,,,
+FD-0101,Field (Component),Business,Organization & People,Regulatory Function Code,Role,,Text,e.g. SMF24,N,Extended,,,
+FD-0102,Field (Component),Business,Organization & People,Is Regulated Role,Role,,Checkbox,,N,Extended,,,
+FD-0103,Field (Component),Business,Organization & People,Body Type,Governance Body,,List,Architecture Review Board;Design Authority;Risk Committee;Model Risk Committee;Change Advisory Board;Investment Committee;Data Governance Council;Security Council;Board,N,Extended,,,
+FD-0104,Field (Component),Business,Organization & People,Meeting Frequency,Governance Body,,List,Weekly;Fortnightly;Monthly;Quarterly;Ad hoc,N,Extended,,,
+FD-0105,Field (Component),Business,Organization & People,Location Type,Location,,List,Head Office;Branch;Operations Centre;Data Centre;DR Site;Cloud Region;Office;Cash Centre,Y,Core,,,
+FD-0106,Field (Component),Business,Organization & People,Country Code,Location,,Text,ISO 3166,N,Extended,,,
+FD-0107,Field (Component),Business,Organization & People,City,Location,,Text,,N,Extended,,,
+FD-0108,Field (Component),Business,Organization & People,Data Centre Tier,Location,,List,Tier I;Tier II;Tier III;Tier IV;Not Applicable,N,Extended,,,
+FD-0109,Field (Component),Business,Organization & People,Is Primary Site,Location,,Checkbox,,N,Extended,,,
+FD-0110,Field (Component),Business,Organization & People,Jurisdiction Type,Jurisdiction,,List,Country;Supranational Bloc;State / Region,N,Extended,,,
+FD-0111,Field (Component),Business,Organization & People,ISO Country Code,Jurisdiction,,Text,,N,Extended,,,
+FD-0112,Field (Component),Business,Organization & People,Data Residency Restriction,Jurisdiction,,List,None;Data Must Remain In-Country;Restricted Cross-Border Transfer,N,Extended,,,
+FD-0113,Field (Component),Business,Organization & People,Primary Currency,Jurisdiction,,Text,,N,Extended,,,
+FD-0114,Field (Component),Data,Information & Data,Data Subject Area,Data Domain,,List,Party / Customer;Account & Agreement;Product;Transaction;Collateral;Instrument & Market Data;Position & Exposure;Ledger & Finance;Risk & Capital;Reference Data;Employee,N,Extended,,,
+FD-0115,Field (Component),Data,Information & Data,Data Classification,Data Entity,,List,Public;Internal;Confidential;Restricted,Y,Core,,,
+FD-0116,Field (Component),Data,Information & Data,Contains PII,Data Entity,,Checkbox,,N,Extended,,,
+FD-0117,Field (Component),Data,Information & Data,Contains Payment Card Data,Data Entity,,Checkbox,,N,Extended,,,
+FD-0118,Field (Component),Data,Information & Data,Contains Special Category Data,Data Entity,,Checkbox,GDPR Art. 9,N,Extended,,,
+FD-0119,Field (Component),Data,Information & Data,Retention Period (Years),Data Entity,,Number,,N,Extended,,,
+FD-0120,Field (Component),Data,Information & Data,Retention Basis,Data Entity,,Text,,N,Extended,,,
+FD-0121,Field (Component),Data,Information & Data,Is Critical Data Element,Data Entity,,Checkbox,,N,Extended,,,
+FD-0122,Field (Component),Data,Information & Data,In Scope for BCBS 239,Data Entity,,Checkbox,,N,Extended,,,
+FD-0123,Field (Component),Data,Information & Data,Regulatory Scope,Data Entity,,Multi-select List,SOX;PCI DSS;GDPR;DORA;NIS2;BCBS 239;PSD2/PSD3;MiFID II;Basel III/IV;IFRS 9;SR 11-7;AML/CTF;FATCA/CRS;GLBA;EU AI Act,N,Extended,,,
+FD-0124,Field (Component),Data,Information & Data,Data Type,Data Element,,List,String;Integer;Decimal;Date;Boolean;Code,N,Extended,,,
+FD-0125,Field (Component),Data,Information & Data,Business Definition,Data Element,,Text Area,,N,Extended,,,
+FD-0126,Field (Component),Data,Information & Data,Is Critical Data Element,Data Element,,Checkbox,,N,Extended,,,
+FD-0127,Field (Component),Data,Information & Data,Data Quality Threshold (%),Data Element,,Number,,N,Extended,,,
+FD-0128,Field (Component),Data,Information & Data,Reference Standard,Data Element,,Text,e.g. ISO 20022 element,N,Extended,,,
+FD-0129,Field (Component),Data,Information & Data,Data Product Status,Data Product,,List,Draft;Published;Deprecated,N,Extended,,,
+FD-0130,Field (Component),Data,Information & Data,Refresh Frequency,Data Product,,List,Real-Time;Near Real-Time;Intraday;Daily;Weekly;Monthly;Quarterly;Annually;On Demand,N,Extended,,,
+FD-0131,Field (Component),Data,Information & Data,Access Policy,Data Product,,Text,,N,Extended,,,
+FD-0132,Field (Component),Data,Information & Data,Data Product Documentation,Data Product,,URL,,N,Extended,,,
+FD-0133,Field (Component),Application,Application Landscape,Application Type,Application,,List,Core Banking;Payments Hub;Cards Processing;Lending / Loan Origination;Digital Channel;CRM;Treasury & Trading;Risk & Finance;Regulatory Reporting;AML / Fraud / Sanctions;Data & Analytics;Integration / Middleware;Security & Identity;Collaboration & Productivity;Other,Y,Core,,,
+FD-0134,Field (Component),Application,Application Landscape,Deployment Model,Application,,List,On-Premises;Mainframe;Private Cloud;Public Cloud;SaaS;Hybrid,Y,Core,,,
+FD-0135,Field (Component),Application,Application Landscape,Business Criticality,Application,,List,Tier 0 - Systemically Critical;Tier 1 - Critical;Tier 2 - Important;Tier 3 - Standard;Tier 4 - Low,Y,Core,,,
+FD-0136,Field (Component),Application,Application Landscape,TIME Disposition,Application,,List,Tolerate;Invest;Migrate;Eliminate,N,Extended,,,
+FD-0137,Field (Component),Application,Application Landscape,Go-Live Date,Application,,Date,,N,Extended,,,
+FD-0138,Field (Component),Application,Application Landscape,End of Support Date,Application,,Date,,N,Extended,,,
+FD-0139,Field (Component),Application,Application Landscape,Recovery Time Objective (min),Application,,Number,,N,Extended,,,
+FD-0140,Field (Component),Application,Application Landscape,Recovery Point Objective (min),Application,,Number,,N,Extended,,,
+FD-0141,Field (Component),Application,Application Landscape,Data Classification,Application,,List,Public;Internal;Confidential;Restricted,N,Extended,,,
+FD-0142,Field (Component),Application,Application Landscape,Contains PII,Application,,Checkbox,,N,Extended,,,
+FD-0143,Field (Component),Application,Application Landscape,Contains Payment Card Data,Application,,Checkbox,,N,Extended,,,
+FD-0144,Field (Component),Application,Application Landscape,Regulatory Scope,Application,,Multi-select List,SOX;PCI DSS;GDPR;DORA;NIS2;BCBS 239;PSD2/PSD3;MiFID II;Basel III/IV;IFRS 9;SR 11-7;AML/CTF;FATCA/CRS;GLBA;EU AI Act,N,Extended,,,
+FD-0145,Field (Component),Application,Application Landscape,Is Material Outsourcing,Application,,Checkbox,,N,Extended,,,
+FD-0146,Field (Component),Application,Application Landscape,Supports Critical or Important Function,Application,,Checkbox,,N,Extended,,,
+FD-0147,Field (Component),Application,Application Landscape,Annual Run Cost,Application,,Number,Reporting currency,N,Extended,,,
+FD-0148,Field (Component),Application,Application Landscape,Functional Fit,Application,,List,1;2;3;4;5,N,Extended,,,
+FD-0149,Field (Component),Application,Application Landscape,Technical Fit,Application,,List,1;2;3;4;5,N,Extended,,,
+FD-0150,Field (Component),Application,Application Landscape,Active Users,Application,,Number,,N,Extended,,,
+FD-0151,Field (Component),Application,Application Landscape,Authentication Method,Application,,List,SSO (SAML/OIDC);Directory (LDAP/AD);Local;MFA Enforced,N,Extended,,,
+FD-0152,Field (Component),Application,Application Landscape,Application URL,Application,,URL,,N,Extended,,,
+FD-0153,Field (Component),Application,Application Landscape,Module Type,Application Module,,List,Functional Module;Microservice;Batch Job;UI Component;Library,N,Extended,,,
+FD-0154,Field (Component),Application,Application Landscape,Version,Application Module,,Text,,N,Extended,,,
+FD-0155,Field (Component),Application,Application Landscape,Release Cadence,Application Module,,List,Continuous;Weekly;Monthly;Quarterly;Annual;Ad hoc,N,Extended,,,
+FD-0156,Field (Component),Application,Application Landscape,Service Type,Application Service,,List,Business Logic;Data;Integration;Security;Presentation,N,Extended,,,
+FD-0157,Field (Component),Application,Application Landscape,Exposure,Application Service,,List,Internal;Partner;Public,N,Extended,,,
+FD-0158,Field (Component),Application,Application Landscape,Interface Type,Interface,,List,API;File Transfer;Message Queue / Event;Database Link;Batch;ETL / ELT;Screen Scrape,Y,Core,,,
+FD-0159,Field (Component),Application,Application Landscape,Protocol,Interface,,List,REST;SOAP;GraphQL;gRPC;SFTP;MQ;Kafka;AMQP;JDBC;FIX;SWIFTNet,N,Extended,,,
+FD-0160,Field (Component),Application,Application Landscape,Data Format,Interface,,List,JSON;XML;ISO 20022;SWIFT MT;Flat File / CSV;Avro / Parquet;ISO 8583;FIX,N,Extended,,,
+FD-0161,Field (Component),Application,Application Landscape,Frequency,Interface,,List,Real-Time;Near Real-Time;Intraday;Daily;Weekly;Monthly;Quarterly;Annually;On Demand,N,Extended,,,
+FD-0162,Field (Component),Application,Application Landscape,Exposure,Interface,,List,Internal;Partner;Public / Open Banking,N,Extended,,,
+FD-0163,Field (Component),Application,Application Landscape,Authentication,Interface,,List,OAuth2;mTLS;API Key;SAML;Basic;None,N,Extended,,,
+FD-0164,Field (Component),Application,Application Landscape,Is Open Banking / PSD2 Interface,Interface,,Checkbox,,N,Extended,,,
+FD-0165,Field (Component),Application,Application Landscape,API Version,Interface,,Text,,N,Extended,,,
+FD-0166,Field (Component),Application,Application Landscape,API Specification Link,Interface,,URL,,N,Extended,,,
+FD-0167,Field (Component),Technology,Technology & Infrastructure,Product Category,Technology Product,,List,Operating System;Database;Middleware;Integration Platform;Security Tooling;Container Platform;Cloud Service;Network;Storage;Development Tooling;Monitoring;Mainframe;End-User Computing;HSM,Y,Core,,,
+FD-0168,Field (Component),Technology,Technology & Infrastructure,Product Version,Technology Product,,Text,,N,Extended,,,
+FD-0169,Field (Component),Technology,Technology & Infrastructure,Standard Status,Technology Product,,List,Strategic;Tolerated;Contained;Retire;Prohibited,Y,Core,,,
+FD-0170,Field (Component),Technology,Technology & Infrastructure,End of Mainstream Support,Technology Product,,Date,,N,Extended,,,
+FD-0171,Field (Component),Technology,Technology & Infrastructure,End of Extended Support,Technology Product,,Date,,N,Extended,,,
+FD-0172,Field (Component),Technology,Technology & Infrastructure,Licence Model,Technology Product,,List,Perpetual;Subscription;Open Source;Consumption-Based;Enterprise Agreement,N,Extended,,,
+FD-0173,Field (Component),Technology,Technology & Infrastructure,Is Open Source,Technology Product,,Checkbox,,N,Extended,,,
+FD-0174,Field (Component),Technology,Technology & Infrastructure,Service Category,Technology Service,,List,Compute;Storage;Database;Network;Identity & Access;Messaging;Monitoring;Security;Container / Orchestration;Backup & DR;Integration;Analytics;Platform,Y,Core,,,
+FD-0175,Field (Component),Technology,Technology & Infrastructure,Service Model,Technology Service,,List,On-Premises;IaaS;PaaS;SaaS,N,Extended,,,
+FD-0176,Field (Component),Technology,Technology & Infrastructure,Standard Status,Technology Service,,List,Strategic;Tolerated;Contained;Retire;Prohibited,N,Extended,,,
+FD-0177,Field (Component),Technology,Technology & Infrastructure,Business Criticality,Technology Service,,List,Tier 0 - Systemically Critical;Tier 1 - Critical;Tier 2 - Important;Tier 3 - Standard;Tier 4 - Low,N,Extended,,,
+FD-0178,Field (Component),Technology,Technology & Infrastructure,Availability Target (%),Technology Service,,Number,,N,Extended,,,
+FD-0179,Field (Component),Technology,Technology & Infrastructure,Recovery Time Objective (min),Technology Service,,Number,,N,Extended,,,
+FD-0180,Field (Component),Technology,Technology & Infrastructure,Recovery Point Objective (min),Technology Service,,Number,,N,Extended,,,
+FD-0181,Field (Component),Technology,Technology & Infrastructure,Capability Category,Technical Capability,,List,Infrastructure;Security;Integration;Data;Observability;Platform,N,Extended,,,
+FD-0182,Field (Component),Technology,Technology & Infrastructure,Strategic Importance,Technical Capability,,List,Differentiating;Core;Supporting;Commodity,N,Extended,,,
+FD-0183,Field (Component),Technology,Technology & Infrastructure,Server Type,Server,,List,Physical;Virtual Machine;Container Cluster;Mainframe LPAR;Appliance;Serverless,Y,Core,,,
+FD-0184,Field (Component),Technology,Technology & Infrastructure,Operating System,Server,,Text,,N,Extended,,,
+FD-0185,Field (Component),Technology,Technology & Infrastructure,Environment,Server,,List,Production;DR;UAT;SIT;Development;Test,Y,Core,,,
+FD-0186,Field (Component),Technology,Technology & Infrastructure,Hostname,Server,,Text,,N,Extended,,,
+FD-0187,Field (Component),Technology,Technology & Infrastructure,Provisioned Date,Server,,Date,,N,Extended,,,
+FD-0188,Field (Component),Technology,Technology & Infrastructure,Decommission Date,Server,,Date,,N,Extended,,,
+FD-0189,Field (Component),Technology,Technology & Infrastructure,Data Store Type,Data Store,,List,Relational DB;NoSQL;Data Warehouse;Data Lake;File Store;Object Storage;Cache;Mainframe VSAM;Message Store;Ledger,Y,Core,,,
+FD-0190,Field (Component),Technology,Technology & Infrastructure,Engine,Data Store,,Text,,N,Extended,,,
+FD-0191,Field (Component),Technology,Technology & Infrastructure,Environment,Data Store,,List,Production;DR;UAT;SIT;Development;Test,N,Extended,,,
+FD-0192,Field (Component),Technology,Technology & Infrastructure,Data Classification,Data Store,,List,Public;Internal;Confidential;Restricted,N,Extended,,,
+FD-0193,Field (Component),Technology,Technology & Infrastructure,Encryption at Rest,Data Store,,Checkbox,,N,Extended,,,
+FD-0194,Field (Component),Technology,Technology & Infrastructure,Encryption in Transit,Data Store,,Checkbox,,N,Extended,,,
+FD-0195,Field (Component),Technology,Technology & Infrastructure,Backup Frequency,Data Store,,List,Real-Time;Near Real-Time;Intraday;Daily;Weekly;Monthly;Quarterly;Annually;On Demand,N,Extended,,,
+FD-0196,Field (Component),Technology,Technology & Infrastructure,Retention Period (Years),Data Store,,Number,,N,Extended,,,
+FD-0197,Field (Component),Technology,Technology & Infrastructure,Cloud Provider,Cloud Account,,List,AWS;Azure;Google Cloud;Oracle Cloud;IBM Cloud;Alibaba Cloud;Private Cloud;Other,Y,Core,,,
+FD-0198,Field (Component),Technology,Technology & Infrastructure,Account / Subscription ID,Cloud Account,,Text,,N,Extended,,,
+FD-0199,Field (Component),Technology,Technology & Infrastructure,Environment,Cloud Account,,List,Production;DR;UAT;SIT;Development;Test,N,Extended,,,
+FD-0200,Field (Component),Technology,Technology & Infrastructure,Region,Cloud Account,,Text,,N,Extended,,,
+FD-0201,Field (Component),Technology,Technology & Infrastructure,Landing Zone Compliant,Cloud Account,,Checkbox,,N,Extended,,,
+FD-0202,Field (Component),Technology,Technology & Infrastructure,Monthly Cost,Cloud Account,,Number,Reporting currency,N,Extended,,,
+FD-0203,Field (Component),Technology,Technology & Infrastructure,Zone Type,Network Zone,,List,Internet;DMZ;Internal;Restricted / PCI;Management;Partner Extranet;Cloud VPC / VNet,Y,Core,,,
+FD-0204,Field (Component),Technology,Technology & Infrastructure,Security Level,Network Zone,,List,Low;Medium;High;Critical,N,Extended,,,
+FD-0205,Field (Component),Governance,"Regulations, Policies & Standards",Authority Type,Regulatory Authority,,List,Prudential Regulator;Conduct Regulator;Central Bank;Supervisory Body;Financial Intelligence Unit;Data Protection Authority;Standards Setter,Y,Core,,,
+FD-0206,Field (Component),Governance,"Regulations, Policies & Standards",Country,Regulatory Authority,,Text,,N,Extended,,,
+FD-0207,Field (Component),Governance,"Regulations, Policies & Standards",Website,Regulatory Authority,,URL,,N,Extended,,,
+FD-0208,Field (Component),Governance,"Regulations, Policies & Standards",Regulation Type,Regulation,,List,Law;Directive;Regulation;Rule;Supervisory Guidance;Industry Standard,Y,Core,,,
+FD-0209,Field (Component),Governance,"Regulations, Policies & Standards",Short Code,Regulation,,Text,e.g. DORA; BCBS 239; PSD2,N,Extended,,,
+FD-0210,Field (Component),Governance,"Regulations, Policies & Standards",Regulatory Domain,Regulation,,List,Prudential & Capital;Liquidity;Operational Resilience;Data & Privacy;Financial Crime;Consumer Protection;Market Conduct;Payments;Reporting;Cyber Security;Third-Party Risk;Model Risk;Climate & ESG,N,Extended,,,
+FD-0211,Field (Component),Governance,"Regulations, Policies & Standards",Regulation Status,Regulation,,List,Proposed;Enacted;In Force;Repealed,N,Extended,,,
+FD-0212,Field (Component),Governance,"Regulations, Policies & Standards",Effective Date,Regulation,,Date,,N,Extended,,,
+FD-0213,Field (Component),Governance,"Regulations, Policies & Standards",Compliance Deadline,Regulation,,Date,,N,Extended,,,
+FD-0214,Field (Component),Governance,"Regulations, Policies & Standards",Reference URL,Regulation,,URL,,N,Extended,,,
+FD-0215,Field (Component),Governance,"Regulations, Policies & Standards",Requirement ID,Requirement,,Text,,Y,Core,,,
+FD-0216,Field (Component),Governance,"Regulations, Policies & Standards",Article / Clause Reference,Requirement,,Text,,N,Extended,,,
+FD-0217,Field (Component),Governance,"Regulations, Policies & Standards",Requirement Text,Requirement,,Text Area,,N,Extended,,,
+FD-0218,Field (Component),Governance,"Regulations, Policies & Standards",Is Mandatory,Requirement,,Checkbox,,N,Extended,,,
+FD-0219,Field (Component),Governance,"Regulations, Policies & Standards",Compliance Status,Requirement,,List,Not Assessed;Compliant;Partially Compliant;Non-Compliant;Not Applicable,N,Extended,,,
+FD-0220,Field (Component),Governance,"Regulations, Policies & Standards",Compliance Deadline,Requirement,,Date,,N,Extended,,,
+FD-0221,Field (Component),Governance,"Regulations, Policies & Standards",Policy Type,Policy,,List,Corporate Policy;Procedure;Guideline,N,Extended,,,
+FD-0222,Field (Component),Governance,"Regulations, Policies & Standards",Policy Version,Policy,,Text,,N,Extended,,,
+FD-0223,Field (Component),Governance,"Regulations, Policies & Standards",Approval Date,Policy,,Date,,N,Extended,,,
+FD-0224,Field (Component),Governance,"Regulations, Policies & Standards",Next Review Date,Policy,,Date,,N,Extended,,,
+FD-0225,Field (Component),Governance,"Regulations, Policies & Standards",Policy Document Link,Policy,,URL,,N,Extended,,,
+FD-0226,Field (Component),Governance,"Regulations, Policies & Standards",Standard Type,Standard,,List,Internal;Industry;Regulatory,N,Extended,,,
+FD-0227,Field (Component),Governance,"Regulations, Policies & Standards",Standard Version,Standard,,Text,,N,Extended,,,
+FD-0228,Field (Component),Governance,"Regulations, Policies & Standards",Next Review Date,Standard,,Date,,N,Extended,,,
+FD-0229,Field (Component),Governance,"Regulations, Policies & Standards",Standard Document Link,Standard,,URL,,N,Extended,,,
+FD-0230,Field (Component),Governance,"Regulations, Policies & Standards",Rationale,Principle,,Text Area,,N,Extended,,,
+FD-0231,Field (Component),Governance,"Regulations, Policies & Standards",Implications,Principle,,Text Area,,N,Extended,,,
+FD-0232,Field (Component),Governance,"Regulations, Policies & Standards",Report Code,Regulatory Report,,Text,e.g. COREP; FINREP; FR Y-9C,N,Extended,,,
+FD-0233,Field (Component),Governance,"Regulations, Policies & Standards",Report Category,Regulatory Report,,List,Capital Adequacy;Liquidity;Large Exposures;Financial Statements;AML / SAR;Transaction Reporting;Stress Test;Resolution Planning;Statistical,N,Extended,,,
+FD-0234,Field (Component),Governance,"Regulations, Policies & Standards",Reporting Frequency,Regulatory Report,,List,Real-Time;Near Real-Time;Intraday;Daily;Weekly;Monthly;Quarterly;Annually;On Demand,N,Extended,,,
+FD-0235,Field (Component),Governance,"Regulations, Policies & Standards",Submission Deadline,Regulatory Report,,Text,e.g. T+30 days,N,Extended,,,
+FD-0236,Field (Component),Governance,"Regulations, Policies & Standards",Submission Method,Regulatory Report,,List,Portal;API;Secure File Transfer;XBRL;Paper,N,Extended,,,
+FD-0237,Field (Component),Risk,"Risk, Control & Resilience",Risk Level,Risk,,List,L1;L2;L3,Y,Core,,,
+FD-0238,Field (Component),Risk,"Risk, Control & Resilience",Risk Category,Risk,,List,Credit Risk;Market Risk;Liquidity Risk;Operational Risk;Compliance Risk;Conduct Risk;Financial Crime Risk;Cyber & Information Security Risk;Technology Risk;Third-Party Risk;Model Risk;Strategic Risk;Reputational Risk;Climate & ESG Risk;Legal Risk,Y,Core,,,
+FD-0239,Field (Component),Risk,"Risk, Control & Resilience",Operational Risk Event Type,Risk,,List,Internal Fraud;External Fraud;Employment Practices;Clients Products & Business Practices;Damage to Physical Assets;Business Disruption & System Failures;Execution Delivery & Process Management,N,Extended,,,
+FD-0240,Field (Component),Risk,"Risk, Control & Resilience",Inherent Risk Rating,Risk,,List,Low;Medium;High;Critical,N,Extended,,,
+FD-0241,Field (Component),Risk,"Risk, Control & Resilience",Residual Risk Rating,Risk,,List,Low;Medium;High;Critical,N,Extended,,,
+FD-0242,Field (Component),Risk,"Risk, Control & Resilience",Risk Appetite Alignment,Risk,,List,Within Appetite;Approaching Limit;Outside Appetite,N,Extended,,,
+FD-0243,Field (Component),Risk,"Risk, Control & Resilience",Risk Treatment,Risk,,List,Accept;Mitigate;Transfer;Avoid,N,Extended,,,
+FD-0244,Field (Component),Risk,"Risk, Control & Resilience",Last Assessment Date,Risk,,Date,,N,Extended,,,
+FD-0245,Field (Component),Risk,"Risk, Control & Resilience",Control ID,Control,,Text,,N,Extended,,,
+FD-0246,Field (Component),Risk,"Risk, Control & Resilience",Control Type,Control,,List,Preventive;Detective;Corrective;Directive,Y,Core,,,
+FD-0247,Field (Component),Risk,"Risk, Control & Resilience",Control Nature,Control,,List,Manual;Automated;Semi-Automated,N,Extended,,,
+FD-0248,Field (Component),Risk,"Risk, Control & Resilience",Control Frequency,Control,,List,Continuous;Daily;Weekly;Monthly;Quarterly;Annual;Event-Driven,N,Extended,,,
+FD-0249,Field (Component),Risk,"Risk, Control & Resilience",Control Framework,Control,,List,SOX ITGC;ISO 27001;NIST CSF;COBIT;CIS Controls;PCI DSS;Internal,N,Extended,,,
+FD-0250,Field (Component),Risk,"Risk, Control & Resilience",Design Effectiveness,Control,,List,Effective;Needs Improvement;Ineffective;Not Tested,N,Extended,,,
+FD-0251,Field (Component),Risk,"Risk, Control & Resilience",Operating Effectiveness,Control,,List,Effective;Needs Improvement;Ineffective;Not Tested,N,Extended,,,
+FD-0252,Field (Component),Risk,"Risk, Control & Resilience",Last Test Date,Control,,Date,,N,Extended,,,
+FD-0253,Field (Component),Risk,"Risk, Control & Resilience",Is Key Control,Control,,Checkbox,,N,Extended,,,
+FD-0254,Field (Component),Risk,"Risk, Control & Resilience",Assessment Type,Assessment,,List,Risk Assessment;Control Test;Business Impact Analysis;Security Review;Privacy Impact Assessment;Architecture Review;Third-Party Due Diligence;Resilience Test;Model Validation;Regulatory Compliance Assessment,Y,Core,,,
+FD-0255,Field (Component),Risk,"Risk, Control & Resilience",Assessment Date,Assessment,,Date,,N,Extended,,,
+FD-0256,Field (Component),Risk,"Risk, Control & Resilience",Next Due Date,Assessment,,Date,,N,Extended,,,
+FD-0257,Field (Component),Risk,"Risk, Control & Resilience",Overall Result,Assessment,,List,Pass;Pass with Findings;Fail;Not Rated,N,Extended,,,
+FD-0258,Field (Component),Risk,"Risk, Control & Resilience",Assessor,Assessment,,Text,,N,Extended,,,
+FD-0259,Field (Component),Risk,"Risk, Control & Resilience",Report Link,Assessment,,URL,,N,Extended,,,
+FD-0260,Field (Component),Risk,"Risk, Control & Resilience",Issue Source,Issue,,List,Internal Audit;Regulator;Self-Identified;External Audit;Incident;Assessment,N,Extended,,,
+FD-0261,Field (Component),Risk,"Risk, Control & Resilience",Severity,Issue,,List,Low;Medium;High;Critical,Y,Core,,,
+FD-0262,Field (Component),Risk,"Risk, Control & Resilience",Issue Status,Issue,,List,Open;In Remediation;Pending Validation;Closed;Risk Accepted,Y,Core,,,
+FD-0263,Field (Component),Risk,"Risk, Control & Resilience",Raised Date,Issue,,Date,,N,Extended,,,
+FD-0264,Field (Component),Risk,"Risk, Control & Resilience",Due Date,Issue,,Date,,N,Extended,,,
+FD-0265,Field (Component),Risk,"Risk, Control & Resilience",Closed Date,Issue,,Date,,N,Extended,,,
+FD-0266,Field (Component),Risk,"Risk, Control & Resilience",Incident Reference,Incident,,Text,,N,Extended,,,
+FD-0267,Field (Component),Risk,"Risk, Control & Resilience",Incident Severity,Incident,,List,Sev 1 - Critical;Sev 2 - Major;Sev 3 - Minor;Sev 4 - Low,Y,Core,,,
+FD-0268,Field (Component),Risk,"Risk, Control & Resilience",Is Major Incident,Incident,,Checkbox,,N,Extended,,,
+FD-0269,Field (Component),Risk,"Risk, Control & Resilience",Is Regulator-Reportable,Incident,,Checkbox,,N,Extended,,,
+FD-0270,Field (Component),Risk,"Risk, Control & Resilience",Detection Date,Incident,,Date,,N,Extended,,,
+FD-0271,Field (Component),Risk,"Risk, Control & Resilience",Resolution Date,Incident,,Date,,N,Extended,,,
+FD-0272,Field (Component),Risk,"Risk, Control & Resilience",Root Cause Category,Incident,,List,People;Process;Technology;Third Party;External Event,N,Extended,,,
+FD-0273,Field (Component),Risk,"Risk, Control & Resilience",Customers Impacted,Incident,,Number,,N,Extended,,,
+FD-0274,Field (Component),Risk,"Risk, Control & Resilience",Designation Framework,Critical or Important Function,,List,DORA Critical or Important Function;UK Important Business Service;US Critical Operations;BCBS Critical Operations;Internal Only,Y,Core,,,
+FD-0275,Field (Component),Risk,"Risk, Control & Resilience",Maximum Tolerable Disruption (hours),Critical or Important Function,,Number,,N,Extended,,,
+FD-0276,Field (Component),Risk,"Risk, Control & Resilience",Impact Tolerance Statement,Critical or Important Function,,Text Area,,N,Extended,,,
+FD-0277,Field (Component),Risk,"Risk, Control & Resilience",Last Scenario Test Date,Critical or Important Function,,Date,,N,Extended,,,
+FD-0278,Field (Component),Risk,"Risk, Control & Resilience",Last Test Outcome,Critical or Important Function,,List,Within Tolerance;Outside Tolerance;Not Tested,N,Extended,,,
+FD-0279,Field (Component),Risk,"Risk, Control & Resilience",Recovery Strategy,Critical or Important Function,,Text Area,,N,Extended,,,
+FD-0280,Field (Component),Risk,"Risk, Control & Resilience",Model Type,Model,,List,Credit Scorecard;PD / LGD / EAD (IRB);IFRS 9 ECL;Market Risk VaR;Liquidity / ALM;Stress Testing;Fraud Detection;AML Transaction Monitoring;Pricing;Marketing / Propensity;Generative AI / LLM;Other,Y,Core,,,
+FD-0281,Field (Component),Risk,"Risk, Control & Resilience",Model Tier,Model,,List,Tier 1 - High;Tier 2 - Medium;Tier 3 - Low,N,Extended,,,
+FD-0282,Field (Component),Risk,"Risk, Control & Resilience",Validation Status,Model,,List,Not Validated;In Validation;Validated;Validated with Conditions;Overdue,N,Extended,,,
+FD-0283,Field (Component),Risk,"Risk, Control & Resilience",Last Validation Date,Model,,Date,,N,Extended,,,
+FD-0284,Field (Component),Risk,"Risk, Control & Resilience",Next Validation Due,Model,,Date,,N,Extended,,,
+FD-0285,Field (Component),Risk,"Risk, Control & Resilience",Regulatory Use,Model,,Text,,N,Extended,,,
+FD-0286,Field (Component),Risk,"Risk, Control & Resilience",Is AI / ML Based,Model,,Checkbox,,N,Extended,,,
+FD-0287,Field (Component),Risk,"Risk, Control & Resilience",EU AI Act Risk Class,Model,,List,Unacceptable;High-Risk;Limited Risk;Minimal Risk;Not Applicable,N,Extended,,,
+FD-0288,Field (Component),Risk,"Risk, Control & Resilience",Model Version,Model,,Text,,N,Extended,,,
+FD-0289,Field (Component),Third Party,Third Parties & Vendors,Vendor Type,Vendor,,List,ICT Service Provider;Cloud Service Provider;Software Vendor;Fintech Partner;Market Data Provider;Payment Processor;Outsourcing / BPO;Consultancy;Hardware Vendor;Telecoms,Y,Core,,,
+FD-0290,Field (Component),Third Party,Third Parties & Vendors,Country of Registration,Vendor,,Text,,N,Extended,,,
+FD-0291,Field (Component),Third Party,Third Parties & Vendors,LEI,Vendor,,Text,,N,Extended,,,
+FD-0292,Field (Component),Third Party,Third Parties & Vendors,Risk Tier,Vendor,,List,Tier 0 - Systemically Critical;Tier 1 - Critical;Tier 2 - Important;Tier 3 - Standard;Tier 4 - Low,N,Extended,,,
+FD-0293,Field (Component),Third Party,Third Parties & Vendors,Is Critical ICT Third-Party Provider,Vendor,,Checkbox,DORA CTPP designation,N,Extended,,,
+FD-0294,Field (Component),Third Party,Third Parties & Vendors,Last Due Diligence Date,Vendor,,Date,,N,Extended,,,
+FD-0295,Field (Component),Third Party,Third Parties & Vendors,Contract ID,Third-Party Arrangement,,Text,,Y,Core,,,
+FD-0296,Field (Component),Third Party,Third Parties & Vendors,Arrangement Type,Third-Party Arrangement,,List,ICT Service;Outsourcing;Software Licence;Cloud Service;Support & Maintenance;Data Provider,Y,Core,,,
+FD-0297,Field (Component),Third Party,Third Parties & Vendors,Contract Start Date,Third-Party Arrangement,,Date,,N,Extended,,,
+FD-0298,Field (Component),Third Party,Third Parties & Vendors,Contract End Date,Third-Party Arrangement,,Date,,N,Extended,,,
+FD-0299,Field (Component),Third Party,Third Parties & Vendors,Notice Period (Days),Third-Party Arrangement,,Number,,N,Extended,,,
+FD-0300,Field (Component),Third Party,Third Parties & Vendors,Annual Contract Value,Third-Party Arrangement,,Number,Reporting currency,N,Extended,,,
+FD-0301,Field (Component),Third Party,Third Parties & Vendors,Contract Currency,Third-Party Arrangement,,Text,ISO 4217,N,Extended,,,
+FD-0302,Field (Component),Third Party,Third Parties & Vendors,Materiality,Third-Party Arrangement,,List,Critical or Important;Material;Non-Material,N,Extended,,,
+FD-0303,Field (Component),Third Party,Third Parties & Vendors,Substitutability,Third-Party Arrangement,,List,Easily Substitutable;Difficult;Not Substitutable,N,Extended,,,
+FD-0304,Field (Component),Third Party,Third Parties & Vendors,Exit Plan Documented,Third-Party Arrangement,,Checkbox,,N,Extended,,,
+FD-0305,Field (Component),Third Party,Third Parties & Vendors,Last Exit Plan Test Date,Third-Party Arrangement,,Date,,N,Extended,,,
+FD-0306,Field (Component),Third Party,Third Parties & Vendors,Subcontracting Permitted,Third-Party Arrangement,,Checkbox,,N,Extended,,,
+FD-0307,Field (Component),Third Party,Third Parties & Vendors,Data Processing Location,Third-Party Arrangement,,Text,,N,Extended,,,
+FD-0308,Field (Component),Third Party,Third Parties & Vendors,Governing Law,Third-Party Arrangement,,Text,,N,Extended,,,
+FD-0309,Field (Component),Third Party,Third Parties & Vendors,In Register of Information,Third-Party Arrangement,,Checkbox,DORA Art. 28,N,Extended,,,
+FD-0310,Field (Component),Third Party,Third Parties & Vendors,Auto-Renewal,Third-Party Arrangement,,Checkbox,,N,Extended,,,
+FD-0311,Field (Component),Third Party,Third Parties & Vendors,SLA Availability Target (%),Third-Party Arrangement,,Number,,N,Extended,,,
+FD-0312,Field (Component),Third Party,Third Parties & Vendors,Audit Rights,Third-Party Arrangement,,Checkbox,,N,Extended,,,
+FD-0313,Field (Component),Third Party,Third Parties & Vendors,Regulatory Scope,Third-Party Arrangement,,Multi-select List,SOX;PCI DSS;GDPR;DORA;NIS2;BCBS 239;PSD2/PSD3;MiFID II;Basel III/IV;IFRS 9;SR 11-7;AML/CTF;FATCA/CRS;GLBA;EU AI Act,N,Extended,,,
+FD-0314,Field (Component),Change,Change & Portfolio,Initiative Type,Initiative,,List,Programme;Project;Epic;Enhancement;BAU Change,Y,Core,,,
+FD-0315,Field (Component),Change,Change & Portfolio,Initiative Status,Initiative,,List,Proposed;Approved;In Flight;On Hold;Completed;Cancelled,Y,Core,,,
+FD-0316,Field (Component),Change,Change & Portfolio,RAG Status,Initiative,,List,Red;Amber;Green,N,Extended,,,
+FD-0317,Field (Component),Change,Change & Portfolio,Start Date,Initiative,,Date,,N,Extended,,,
+FD-0318,Field (Component),Change,Change & Portfolio,End Date,Initiative,,Date,,N,Extended,,,
+FD-0319,Field (Component),Change,Change & Portfolio,Total Budget,Initiative,,Number,Reporting currency,N,Extended,,,
+FD-0320,Field (Component),Change,Change & Portfolio,Budget Currency,Initiative,,Text,ISO 4217,N,Extended,,,
+FD-0321,Field (Component),Change,Change & Portfolio,Change Category,Initiative,,List,Run the Bank;Change the Bank;Regulatory & Compliance,N,Extended,,,
+FD-0322,Field (Component),Change,Change & Portfolio,Is Regulatory Mandate,Initiative,,Checkbox,,N,Extended,,,
+FD-0323,Field (Component),Change,Change & Portfolio,Strategic Theme,Initiative,,Text,,N,Extended,,,
+FD-0324,Field (Component),Change,Change & Portfolio,Delivery Method,Initiative,,List,Agile;Waterfall;Hybrid,N,Extended,,,
+FD-0325,Field (Component),Change,Change & Portfolio,Business Case Link,Initiative,,URL,,N,Extended,,,
+FD-0326,Field (Component),Change,Change & Portfolio,Delta Type,Capability Delta,,List,Build;Enhance;Retire;Consolidate,N,Extended,,,
+FD-0327,Field (Component),Change,Change & Portfolio,Current Maturity,Capability Delta,,List,1;2;3;4;5,N,Extended,,,
+FD-0328,Field (Component),Change,Change & Portfolio,Target Maturity,Capability Delta,,List,1;2;3;4;5,N,Extended,,,
+FD-0329,Field (Component),Change,Change & Portfolio,Gap Description,Capability Delta,,Text Area,,N,Extended,,,
+FD-0330,Field (Component),Change,Change & Portfolio,State Type,Future State,,List,Target State;Transition State,Y,Core,,,
+FD-0331,Field (Component),Change,Change & Portfolio,Target Date,Future State,,Date,,N,Extended,,,
+FD-0332,Field (Component),Change,Change & Portfolio,State Description,Future State,,Text Area,,N,Extended,,,
+FD-0333,Field (Component),Change,Change & Portfolio,Debt Type,Technical Debt,,List,Code;Architecture;Infrastructure;Data;Security;Process;Obsolescence,N,Extended,,,
+FD-0334,Field (Component),Change,Change & Portfolio,Estimated Remediation Cost,Technical Debt,,Number,Reporting currency,N,Extended,,,
+FD-0335,Field (Component),Change,Change & Portfolio,Risk Impact,Technical Debt,,List,Low;Medium;High;Critical,N,Extended,,,
+FD-0336,Field (Component),Change,Change & Portfolio,Identified Date,Technical Debt,,Date,,N,Extended,,,
+FD-0337,Field (Component),Change,Change & Portfolio,Target Remediation Date,Technical Debt,,Date,,N,Extended,,,
+FD-0338,Field (Component),Governance,Architecture Governance & Patterns,Decision Status,Architecture Decision Record,,List,Proposed;Accepted;Superseded;Rejected;Deprecated,Y,Core,,,
+FD-0339,Field (Component),Governance,Architecture Governance & Patterns,Decision Date,Architecture Decision Record,,Date,,N,Extended,,,
+FD-0340,Field (Component),Governance,Architecture Governance & Patterns,Context,Architecture Decision Record,,Text Area,,N,Extended,,,
+FD-0341,Field (Component),Governance,Architecture Governance & Patterns,Decision,Architecture Decision Record,,Text Area,,N,Extended,,,
+FD-0342,Field (Component),Governance,Architecture Governance & Patterns,Alternatives Considered,Architecture Decision Record,,Text Area,,N,Extended,,,
+FD-0343,Field (Component),Governance,Architecture Governance & Patterns,Consequences,Architecture Decision Record,,Text Area,,N,Extended,,,
+FD-0344,Field (Component),Governance,Architecture Governance & Patterns,ADR Document Link,Architecture Decision Record,,URL,,N,Extended,,,
+FD-0345,Field (Component),Governance,Architecture Governance & Patterns,Pattern Type,Architecture Pattern,,List,Reference Architecture;Solution Pattern;Integration Pattern;Security Pattern;Data Pattern;Deployment Pattern,N,Extended,,,
+FD-0346,Field (Component),Governance,Architecture Governance & Patterns,Pattern Status,Architecture Pattern,,List,Draft;Approved;Deprecated,N,Extended,,,
+FD-0347,Field (Component),Governance,Architecture Governance & Patterns,Pattern Version,Architecture Pattern,,Text,,N,Extended,,,
+FD-0348,Field (Component),Governance,Architecture Governance & Patterns,Applicability,Architecture Pattern,,Text Area,,N,Extended,,,
+FD-0349,Field (Component),Governance,Architecture Governance & Patterns,Design Object Type,Design Object,,Text,Free text (weakly typed),N,Extended,,,
+FD-0350,Field (Component),Reference,BIAN Reference Model,BIAN ID,BIAN Business Area,,Text,,N,Extended,,,
+FD-0351,Field (Component),Reference,BIAN Reference Model,BIAN Version,BIAN Business Area,,Text,,N,Extended,,,
+FD-0352,Field (Component),Reference,BIAN Reference Model,BIAN ID,BIAN Business Domain,,Text,,N,Extended,,,
+FD-0353,Field (Component),Reference,BIAN Reference Model,BIAN Version,BIAN Business Domain,,Text,,N,Extended,,,
+FD-0354,Field (Component),Reference,BIAN Reference Model,BIAN ID,BIAN Service Domain,,Text,,N,Extended,,,
+FD-0355,Field (Component),Reference,BIAN Reference Model,BIAN Version,BIAN Service Domain,,Text,,N,Extended,,,
+FD-0356,Field (Component),Reference,BIAN Reference Model,Asset Type,BIAN Service Domain,,Text,,N,Extended,,,
+FD-0357,Field (Component),Reference,BIAN Reference Model,Functional Pattern,BIAN Service Domain,,Text,e.g. Fulfill; Manage; Process,N,Extended,,,
+FD-0358,Field (Component),Reference,BIAN Reference Model,Generic Artifact Type,BIAN Service Domain,,Text,e.g. Agreement; Plan,N,Extended,,,
+FD-0359,Field (Component),Reference,BIAN Reference Model,Coverage Status,BIAN Service Domain,,List,Not Covered;Partially Covered;Fully Covered,N,Extended,,,
+FD-0360,Field (Component),Reference,BIAN Reference Model,Action Term,BIAN Service Operation,,Text,,N,Extended,,,
+FD-0361,Field (Component),Reference,BIAN Reference Model,Service Group,BIAN Service Operation,,Text,e.g. Setup,N,Extended,,,
+FD-0362,Field (Reference),Cross-workspace,All Workspaces,Time Allocated (%),Assigned To,,Number,0-100,N,Extended,,,
+FD-0363,Field (Reference),Cross-workspace,All Workspaces,Role on Initiative,Assigned To,,List,Sponsor;Lead;Architect;Delivery;SME,N,Extended,,,
+FD-0364,Field (Reference),Cross-workspace,All Workspaces,Impact Type,Impacts,,List,Introduce;Change;Replace;Retire;Migrate,N,Extended,,,
+FD-0365,Field (Reference),Cross-workspace,All Workspaces,Impact Level,Impacts,,List,Low;Medium;High,N,Extended,,,
+FD-0366,Field (Reference),Cross-workspace,All Workspaces,Support Level,Is Realized By,,List,Full;Partial;Planned,N,Extended,,,
+FD-0367,Field (Reference),Cross-workspace,All Workspaces,Dependency Type,Depends On,,List,Runtime;Data;Hosting;Operational;Contractual,N,Extended,,,
+FD-0368,Field (Reference),Cross-workspace,All Workspaces,Dependency Criticality,Depends On,,List,Low;Medium;High;Critical,N,Extended,,,
+FD-0369,Field (Reference),Cross-workspace,All Workspaces,CRUD Operations,Accesses,,Multi-select List,Create;Read;Update;Delete,N,Extended,,,
+FD-0370,Field (Reference),Cross-workspace,All Workspaces,Access Method,Accesses,,List,API;Direct DB;File;Message,N,Extended,,,
+FD-0371,Field (Reference),Cross-workspace,All Workspaces,CRUD Operations,Uses,,Multi-select List,Create;Read;Update;Delete,N,Extended,,,
+FD-0372,Field (Reference),Cross-workspace,All Workspaces,Data Classification,Sends Data To,,List,Public;Internal;Confidential;Restricted,N,Extended,,,
+FD-0373,Field (Reference),Cross-workspace,All Workspaces,Frequency,Sends Data To,,List,Real-Time;Near Real-Time;Intraday;Daily;Weekly;Monthly;Quarterly;Annually;On Demand,N,Extended,,,
+FD-0374,Field (Reference),Cross-workspace,All Workspaces,Protocol,Sends Data To,,Text,e.g. REST; SFTP; Kafka; MQ,N,Extended,,,
+FD-0375,Field (Reference),Cross-workspace,All Workspaces,Message Standard,Sends Data To,,List,ISO 20022;SWIFT MT;ISO 8583;FIX;JSON;XML;Flat File,N,Extended,,,
+FD-0376,Field (Reference),Cross-workspace,All Workspaces,Avg Daily Volume,Sends Data To,,Number,records or messages,N,Extended,,,
+FD-0377,Field (Reference),Cross-workspace,All Workspaces,Is Real-Time,Sends Data To,,Checkbox,,N,Extended,,,
+FD-0378,Field (Reference),Cross-workspace,All Workspaces,Environment,Is Hosted On,,List,Production;DR;UAT;SIT;Development;Test,N,Extended,,,
+FD-0379,Field (Reference),Cross-workspace,All Workspaces,Hosting Role,Is Hosted On,,List,Primary;Secondary;DR,N,Extended,,,
+FD-0380,Field (Reference),Cross-workspace,All Workspaces,Version in Use,Is Instance Of,,Text,,N,Extended,,,
+FD-0381,Field (Reference),Cross-workspace,All Workspaces,Planned Cutover Date,Has Successor,,Date,,N,Extended,,,
+FD-0382,Field (Reference),Cross-workspace,All Workspaces,Mastery Type,Is Mastered By,,List,System of Record;System of Reference;System of Entry,N,Extended,,,
+FD-0383,Field (Reference),Cross-workspace,All Workspaces,Report Cell or Field Reference,Feeds,,Text,e.g. COREP template cell,N,Extended,,,
+FD-0384,Field (Reference),Cross-workspace,All Workspaces,Mitigation Effectiveness,Mitigates,,List,Full;Partial;Minimal,N,Extended,,,
+FD-0385,Field (Reference),Cross-workspace,All Workspaces,Coverage Level,Is Satisfied By,,List,Full;Partial;Gap,N,Extended,,,
+FD-0386,Field (Reference),Cross-workspace,All Workspaces,Evidence Link,Is Satisfied By,,URL,,N,Extended,,,
+FD-0387,Field (Reference),Cross-workspace,All Workspaces,Applicability Rationale,Applies To,,Text,,N,Extended,,,
+FD-0388,Field (Reference),Cross-workspace,All Workspaces,Connection Type,Connects To,,List,Direct;Via Service Bureau;Via Correspondent,N,Extended,,,
+FD-0389,Field (Reference),Cross-workspace,All Workspaces,Message Standard,Connects To,,List,ISO 20022;SWIFT MT;ISO 8583;FIX;Proprietary,N,Extended,,,
+FD-0390,Field (Reference),Cross-workspace,All Workspaces,Participation Type,Is Participant In,,List,Direct;Indirect;Sponsored,N,Extended,,,
+FD-0391,Field (Reference),Cross-workspace,All Workspaces,Participant ID (e.g. BIC),Is Participant In,,Text,,N,Extended,,,
+FD-0392,Field (Reference),Cross-workspace,All Workspaces,Reference Type,References,,Text,Free-text specialisation of the generic reference,N,Extended,,,
+FD-0393,Field (Reference),Cross-workspace,All Workspaces,Coverage Scope,Covers,,Text,,N,Extended,,,
